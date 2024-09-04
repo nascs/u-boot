@@ -5,7 +5,7 @@
  * Copyright (c) 2024 Radxa Computer (Shenzhen) Co., Ltd.
  */
 
-#include "rk3568.dtsi"
+#include "rk3568-u-boot.dtsi"
 
 / {
 	chosen {
