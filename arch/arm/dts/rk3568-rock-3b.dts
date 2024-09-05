@@ -628,6 +628,14 @@
 	};
 };
 
+&crypto {
+	status = "okay";
+};
+
+&uart2 {
+	status = "okay";
+};
+
 &uart8 {
 	status = "okay";
 	pinctrl-names = "default";
