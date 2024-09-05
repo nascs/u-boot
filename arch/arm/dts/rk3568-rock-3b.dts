@@ -15,6 +15,12 @@
 	model = "Radxa ROCK 3 Model B";
 	compatible = "radxa,rock-3b", "rockchip,rk3568";
 
+	aliases {
+		ethernet0 = &gmac1;
+		mmc0 = &sdhci;
+		mmc1 = &sdmmc0;
+	};
+
 	fan0: pwm-fan {
 		compatible = "pwm-fan";
 		#cooling-cells = <2>;
