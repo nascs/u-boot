@@ -198,14 +198,16 @@
 
 	pcie30_3v3: gpio-regulator {
 		u-boot,dm-pre-reloc;
-		compatible = "regulator-gpio";
+		// compatible = "regulator-gpio";
+		compatible = "regulator-fixed";
 		regulator-name = "pcie30_3v3";
-		regulator-min-microvolt = <100000>;
+		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
-		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
-		gpios-states = <0x1>;
-		states = <100000 0x0
-			  3300000 0x1>;
+		enable-active-high;
+		gpio = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
+		regulator-boot-on;
+		regulator-always-on;
+		vin-supply = <&vcc5v0_sys>;
 	};
 
 	sdio_pwrseq: sdio-pwrseq {
@@ -849,7 +851,7 @@
 
 &sfc {
 	u-boot,dm-pre-reloc;
-	status = "disabled";
+	status = "okay";
 	max-freq = <50000000>;
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -864,7 +866,7 @@
 		spi-max-frequency = <50000000>;
 		spi-tx-bus-width = <1>;
 		spi-rx-bus-width = <4>;
-		status = "disabled";
+		status = "okay";
 	};
 };
 
@@ -897,78 +899,80 @@
 	status = "okay";
 };
 
-/* USB OTG/USB Host_1 USB 2.0 Comb PHY_0 */
-&usb2phy0 {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// /* USB OTG/USB Host_1 USB 2.0 Comb PHY_0 */
+// &usb2phy0 {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
-/* USB Host_2/USB Host_3 USB 2.0 Comb PHY_1 */
-&usb2phy1 {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// /* USB Host_2/USB Host_3 USB 2.0 Comb PHY_1 */
+// &usb2phy1 {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
-/* USB 2.0 Host_2 EHCI controller for high speed */
-&usb_host0_ehci {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// /* USB 2.0 Host_2 EHCI controller for high speed */
+// &usb_host0_ehci {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
-/* USB 2.0 Host_2 OHCI controller for full/low speed */
-&usb_host0_ohci {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// /* USB 2.0 Host_2 OHCI controller for full/low speed */
+// &usb_host0_ohci {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
-/* USB 2.0 Host_3 EHCI controller for high speed */
-&usb_host1_ehci {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// /* USB 2.0 Host_3 EHCI controller for high speed */
+// &usb_host1_ehci {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
-/* USB 2.0 Host_3 OHCI controller for full/low speed */
-&usb_host1_ohci {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// /* USB 2.0 Host_3 OHCI controller for full/low speed */
+// &usb_host1_ohci {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
-&usbdrd_dwc3 {
-	u-boot,dm-pre-reloc;
-	extcon=<&usb2phy0>;
-	status="okay";
-};
+// &usbdrd_dwc3 {
+// 	u-boot,dm-pre-reloc;
+// 	extcon=<&usb2phy0>;
+// 	maximum-speed = "high-speed";
+// 	status="okay";
+// };
 
-/* USB 3.0 OTG controller */
-&usbdrd30 {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// /* USB 3.0 OTG controller */
+// &usbdrd30 {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
-&usbhost_dwc3 {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// &usbhost_dwc3 {
+// 	u-boot,dm-pre-reloc;
+// 	maximum-speed = "high-speed";
+// 	status = "okay";
+// };
 
-/* USB 3.0 Host_1 controller */
-&usbhost30 {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// /* USB 3.0 Host_1 controller */
+// &usbhost30 {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
-/* USB 3.0 OTG/SATA Combo PHY_0 */
-&combphy0_us {
-	u-boot,dm-pre-reloc;
-//	rockchip,dis-u3otg0-port;
-	status = "okay";
-};
+// /* USB 3.0 OTG/SATA Combo PHY_0 */
+// &combphy0_us {
+// 	u-boot,dm-pre-reloc;
+// //	rockchip,dis-u3otg0-port;
+// 	status = "okay";
+// };
 
-/* USB 3.0 Host/SATA/QSGMII Combo PHY_1 */
-&combphy1_usq {
-	u-boot,dm-pre-reloc;
-//	rockchip,dis-u3otg1-port;
-	status = "okay";
-};
+// /* USB 3.0 Host/SATA/QSGMII Combo PHY_1 */
+// &combphy1_usq {
+// 	u-boot,dm-pre-reloc;
+// //	rockchip,dis-u3otg1-port;
+// 	status = "okay";
+// };
 
 &combphy2_psq {
 	u-boot,dm-pre-reloc;
@@ -1118,12 +1122,42 @@
 };
 
 // PCIe M Key
+
 &pcie3x2 {
 	u-boot,dm-pre-reloc;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pcie30x2m1_pins>;
 	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
 	vpcie3v3-supply = <&pcie30_3v3>;
+	status = "okay";
+};
+
+&pcie30_phy_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&gpio0 {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&gpio1 {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&gpio2 {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&gpio3 {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&gpio4 {
+	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
@@ -1143,6 +1177,7 @@
 
 &pinctrl {
 	u-boot,dm-spl;
+
 	pmic {
 		u-boot,dm-pre-reloc;
 		pmic_int: pmic_int {
