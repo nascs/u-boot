@@ -72,7 +72,7 @@ static int spl_spi_load_image(struct spl_image_info *spl_image,
 			      struct spl_boot_device *bootdev)
 {
 	int err = 0;
-	unsigned payload_offs = CONFIG_SYS_SPI_U_BOOT_OFFS;
+	unsigned payload_offs = CONFIG_SYS_NAND_U_BOOT_OFFS;
 	struct spi_flash *flash;
 	struct image_header *header;
 
