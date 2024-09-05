@@ -7,12 +7,6 @@
 
 #include "rk3568-u-boot.dtsi"
 
-/ {
-	chosen {
-		stdout-path = &uart2;
-	};
-};
-
 &sdmmc2 {
 	status = "disabled";
 };
