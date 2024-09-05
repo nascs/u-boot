@@ -10,16 +10,11 @@
 #include <dt-bindings/pinctrl/rockchip.h>
 #include <dt-bindings/input/input.h>
 #include "rk3568.dtsi"
+#include "rk3568-u-boot.dtsi"
 
 / {
 	model = "Radxa ROCK 3 Model B";
 	compatible = "radxa,rock-3b", "rockchip,rk3568";
-
-	aliases {
-		ethernet0 = &gmac1;
-		mmc0 = &sdhci;
-		mmc1 = &sdmmc0;
-	};
 
 	fan0: pwm-fan {
 		compatible = "pwm-fan";
