@@ -2026,6 +2026,7 @@ static int rockchip_display_fixup_dts(void *blob)
 
 static int rockchip_display_probe(struct udevice *dev)
 {
+	printf("===== rockchip_display_probe start =====\n");
 	struct video_priv *uc_priv = dev_get_uclass_priv(dev);
 	struct video_uc_platdata *plat = dev_get_uclass_platdata(dev);
 	const void *blob = gd->fdt_blob;
@@ -2243,6 +2244,8 @@ static int rockchip_display_probe(struct udevice *dev)
 	rockchip_show_fbbase(plat->base);
 	video_set_flush_dcache(dev, true);
 	#endif
+
+	printf("===== rockchip_display_probe end =====\n");
 
 	return 0;
 }
