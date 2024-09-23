@@ -310,14 +310,14 @@
 	cpu-supply = <&vdd_cpu>;
 };
 
-// &dfi {
-// 	status = "okay";
-// };
+&dfi {
+	status = "okay";
+};
 
-// &dmc {
-// 	center-supply = <&vdd_logic>;
-// 	status = "okay";
-// };
+&dmc {
+	center-supply = <&vdd_logic>;
+	status = "okay";
+};
 
 &video_phy0 {
 	u-boot,dm-pre-reloc;
@@ -349,6 +349,22 @@
 &hdmi_sound {
 	u-boot,dm-pre-reloc;
 	status = "okay";
+};
+
+&vp0_out_hdmi {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&display_subsystem {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&route_hdmi {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+	connect = <&vp0_out_hdmi>;
 };
 
 &i2c0 {
