@@ -51,7 +51,8 @@ obj-$(CONFIG_ROCKCHIP_UIMAGE) += uimage.o
 obj-$(CONFIG_ROCKCHIP_SMCCC) += rockchip_smccc.o
 obj-$(CONFIG_ROCKCHIP_VENDOR_PARTITION) += vendor.o vendor_misc.o
 obj-$(CONFIG_ROCKCHIP_RESOURCE_IMAGE) += resource_img.o
-obj-$(CONFIG_ROCKCHIP_HWID_DTB) += rk_hwid.o
+obj-$(CONFIG_RADXA_IMG) += radxa_img.o
+obj-$(CONFIG_ROCKCHIP_HWID_DTB) += resource_hwid.o
 obj-$(CONFIG_ROCKCHIP_DEBUGGER) += rockchip_debugger.o
 obj-$(CONFIG_RADXA_IMG) += radxa_img.o
 endif
