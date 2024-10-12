@@ -1459,22 +1459,12 @@ static int load_bmp_logo(struct logo_info *logo, const char *bmp_name)
 	bmp_create(&bmp, &bitmap_callbacks);
 
 #ifdef CONFIG_RADXA_IMG
-	printf("===== radxa read bmp file =====\n");
 	len = radxa_read_bmp_file(bmp_data, bmp_name);
 #elif CONFIG_ROCKCHIP_RESOURCE_IMAGE
 	len = rockchip_read_resource_file(bmp_data, bmp_name, 0, MAX_IMAGE_BYTES);
 #else
 	return -EINVAL;
 #endif
-
-	if(bmp_data == NULL) {
-		printf("===== bmp_data is NULL =====\n");
-		ret = -EINVAL;
-		goto free_bmp_data;
-	}
-
-	printf("===== load_bmp_logo: len = %d, bmp_name: %s =====\n", len, bmp_name);
-	printf("===== bmp_data: %c, %c, %c, %c  =====\n", *(char *)bmp_data, *(char *)bmp_data+1, *(char *)bmp_data+2, *(char *)bmp_data+3);
 
 	if (len < 0) {
 		ret = -EINVAL;
