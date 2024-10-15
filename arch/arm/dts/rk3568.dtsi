@@ -11,6 +11,7 @@
 #include <dt-bindings/soc/rockchip,boot-mode.h>
 #include <dt-bindings/phy/phy.h>
 #include <dt-bindings/power/rk3568-power.h>
+#include <dt-bindings/soc/rockchip-system-status.h>
 
 / {
 	compatible = "rockchip,rk3568";
@@ -141,9 +142,193 @@
 		nvmem-cell-names = "id", "cpu-version", "cpu-code";
 	};
 
+	scmi_shmem: scmi-shmem@10f000 {
+		compatible = "arm,scmi-shmem";
+		reg = <0x0 0x0010f000 0x0 0x100>;
+	};
+
+	firmware {
+		scmi: scmi {
+			compatible = "arm,scmi-smc";
+			shmem = <&scmi_shmem>;
+			arm,smc-id = <0x82000010>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			scmi_clk: protocol@14 {
+				reg = <0x14>;
+				#clock-cells = <1>;
+
+				rockchip,clk-init = <1104000000>;
+			};
+		};
+
+		sdei: sdei {
+			compatible = "arm,sdei-1.0";
+			method = "smc";
+		};
+	};
+
+	reserved_memory: reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		drm_logo: drm-logo@00000000 {
+			compatible = "rockchip,drm-logo";
+			reg = <0x0 0x0 0x0 0x0>;
+		};
+
+		drm_cubic_lut: drm-cubic-lut@00000000 {
+			compatible = "rockchip,drm-cubic-lut";
+			reg = <0x0 0x0 0x0 0x0>;
+		};
+	};
+
+	dmc_opp_table: dmc-opp-table {
+		compatible = "operating-points-v2";
+
+		mbist-vmin = <825000 900000 950000>;
+		nvmem-cells = <&log_leakage>, <&core_pvtm>, <&mbist_vmin>, <&dmc_opp_info>;
+		nvmem-cell-names = "leakage", "pvtm", "mbist-vmin", "opp-info";
+		rockchip,max-volt = <1000000>;
+		rockchip,temp-hysteresis = <5000>;
+		rockchip,low-temp = <0>;
+		rockchip,low-temp-adjust-volt = <
+			/* MHz    MHz    uV */
+			   0      1560   75000
+		>;
+		rockchip,leakage-voltage-sel = <
+			1   80    0
+			81  254   1
+		>;
+		rockchip,pvtm-voltage-sel = <
+			0        84000   0
+			84001    100000  1
+		>;
+		rockchip,pvtm-ch = <0 5>;
+
+		opp-1560000000 {
+			opp-hz = /bits/ 64 <1560000000>;
+			opp-microvolt = <900000 900000 1000000>;
+			opp-microvolt-L0 = <900000 900000 1000000>;
+			opp-microvolt-L1 = <875000 875000 1000000>;
+		};
+	};
+
+	nocp_cpu: nocp-cpu@fe102000 {
+		compatible = "rockchip,rk3568-nocp";
+		reg = <0x0 0xfe102000 0x0 0x400>;
+	};
+
+	dfi: dfi@fe230000 {
+		reg = <0x00 0xfe230000 0x00 0x400>;
+		compatible = "rockchip,rk3568-dfi";
+		rockchip,pmugrf = <&pmugrf>;
+		status = "disabled";
+	};
+
+	dmc: dmc {
+		compatible = "rockchip,rk3568-dmc";
+		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "complete";
+		devfreq-events = <&dfi>, <&nocp_cpu>;
+		clocks = <&scmi_clk 3>;
+		clock-names = "dmc_clk";
+		operating-points-v2 = <&dmc_opp_table>;
+		vop-bw-dmc-freq = <
+		/* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
+			0	286	324000
+			287	99999	528000
+		>;
+		vop-frame-bw-dmc-freq = <
+		/* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
+			0	620	324000
+			621	99999	780000
+		>;
+		cpu-bw-dmc-freq = <
+		/* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
+			0	350	324000
+			351	400	528000
+			401	99999	780000
+		>;
+		upthreshold = <40>;
+		downdifferential = <20>;
+		system-status-level = <
+			/*system status         freq level*/
+			SYS_STATUS_NORMAL       DMC_FREQ_LEVEL_MID_HIGH
+			SYS_STATUS_REBOOT       DMC_FREQ_LEVEL_HIGH
+			SYS_STATUS_SUSPEND      DMC_FREQ_LEVEL_LOW
+			SYS_STATUS_VIDEO_4K     DMC_FREQ_LEVEL_MID_HIGH
+			SYS_STATUS_VIDEO_4K_10B DMC_FREQ_LEVEL_MID_HIGH
+			SYS_STATUS_BOOST        DMC_FREQ_LEVEL_HIGH
+			SYS_STATUS_ISP          DMC_FREQ_LEVEL_HIGH
+			SYS_STATUS_PERFORMANCE  DMC_FREQ_LEVEL_HIGH
+			SYS_STATUS_DUALVIEW     DMC_FREQ_LEVEL_HIGH
+		>;
+		auto-min-freq = <324000>;
+		auto-freq-en = <1>;
+		#cooling-cells = <2>;
+		status = "disabled";
+	};
+
 	display_subsystem: display-subsystem {
 		compatible = "rockchip,display-subsystem";
+		memory-region = <&drm_logo>, <&drm_cubic_lut>;
+		memory-region-names = "drm-logo", "drm-cubic-lut";
 		ports = <&vop_out>;
+		devfreq = <&dmc>;
+
+		route {
+			route_dsi0: route-dsi0 {
+				status = "disabled";
+				logo,uboot = "logo.bmp";
+				logo,kernel = "logo_kernel.bmp";
+				logo,mode = "center";
+				charge_logo,mode = "center";
+				connect = <&vp0_out_dsi0>;
+			};
+			route_dsi1: route-dsi1 {
+				status = "disabled";
+				logo,uboot = "logo.bmp";
+				logo,kernel = "logo_kernel.bmp";
+				logo,mode = "center";
+				charge_logo,mode = "center";
+				connect = <&vp0_out_dsi1>;
+			};
+			route_edp: route-edp {
+				status = "disabled";
+				logo,uboot = "logo.bmp";
+				logo,kernel = "logo_kernel.bmp";
+				logo,mode = "center";
+				charge_logo,mode = "center";
+				connect = <&vp0_out_edp>;
+			};
+			route_hdmi: route-hdmi {
+				status = "disabled";
+				logo,uboot = "logo.bmp";
+				logo,kernel = "logo_kernel.bmp";
+				logo,mode = "center";
+				charge_logo,mode = "center";
+				connect = <&vp1_out_hdmi>;
+			};
+			route_lvds: route-lvds {
+				status = "disabled";
+				logo,uboot = "logo.bmp";
+				logo,kernel = "logo_kernel.bmp";
+				logo,mode = "center";
+				charge_logo,mode = "center";
+				connect = <&lvds1_in_vp1>;
+			};
+			route_rgb: route-rgb {
+				status = "disabled";
+				logo,uboot = "logo.bmp";
+				logo,kernel = "logo_kernel.bmp";
+				logo,mode = "center";
+				charge_logo,mode = "center";
+				connect = <&vp2_out_rgb>;
+			};
+		};
 	};
 
 	mpp_srv: mpp-srv {
@@ -1960,6 +2145,10 @@
 		tsadc_trim_base: tsadc-trim-base@32 {
 			reg = <0x32 0x1>;
 		};
+		dmc_opp_info: dmc-opp-info@48 {
+			reg = <0x48 0x6>;
+		};
+
 	};
 
 	i2s0_8ch: i2s@fe400000 {
