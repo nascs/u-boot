@@ -474,6 +474,26 @@
 	status = "okay";
 };
 
+&display_subsystem {
+	u-boot,dm-pre-reloc;	
+};
+
+&route_hdmi {
+	u-boot,dm-pre-reloc;	
+};
+
+&dfi {
+	u-boot,dm-pre-reloc;	
+};
+
+&dmc {
+	u-boot,dm-pre-reloc;
+};
+
+&vop {
+	u-boot,dm-pre-reloc;
+};
+
 #if 0
 &i2c0 {
 	u-boot,dm-pre-reloc;
