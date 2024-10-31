@@ -420,14 +420,27 @@
 };
 
 &gpio0 {
+	status = "okay";
 	u-boot,dm-spl;
 };
 
 &gpio1 {
+	status = "okay";
 	u-boot,dm-spl;
 };
 
 &gpio2 {
+	status = "okay";
+	u-boot,dm-spl;
+};
+
+&gpio3 {
+	status = "okay";
+	u-boot,dm-spl;
+};
+
+&gpio4 {
+	status = "okay";
 	u-boot,dm-spl;
 };
 
