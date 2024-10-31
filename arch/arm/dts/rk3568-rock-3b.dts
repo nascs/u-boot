@@ -7,7 +7,7 @@
 #include <dt-bindings/display/drm_mipi_dsi.h>
 #include <dt-bindings/sensor-dev.h>
 #include "rk3568.dtsi"
-#include "rk3568-u-boot.dtsi"
+#include "rk3568-rock-3b-u-boot.dtsi"
 #include <dt-bindings/input/input.h>
 
 / {
@@ -15,7 +15,6 @@
 	compatible = "radxa,rock-3b", "rockchip,rk3568";
 
 	fan0: pwm-fan {
-		u-boot,dm-pre-reloc;
 		compatible = "pwm-fan";
 		#cooling-cells = <2>;
 		cooling-levels = <0 64 128 192 255>;
@@ -23,7 +22,6 @@
 	};
 
 	fiq_debugger: fiq-debugger {
-		u-boot,dm-pre-reloc;
 		compatible = "rockchip,fiq-debugger";
 		rockchip,serial-id = <2>;
 		rockchip,wake-irq = <0>;
@@ -37,7 +35,6 @@
 	};
 
 	debug: debug@fd904000 {
-		u-boot,dm-pre-reloc;
 		compatible = "rockchip,debug";
 		reg = <0x0 0xfd904000 0x0 0x1000>,
 			<0x0 0xfd905000 0x0 0x1000>,
@@ -46,7 +43,6 @@
 	};
 
 	cspmu: cspmu@fd90c000 {
-		u-boot,dm-pre-reloc;
 		compatible = "rockchip,cspmu";
 		reg = <0x0 0xfd90c000 0x0 0x1000>,
 			<0x0 0xfd90d000 0x0 0x1000>,
@@ -55,7 +51,6 @@
 	};
 
 	audiopwmout_diff: audiopwmout-diff {
-		u-boot,dm-pre-reloc;
 		status = "disabled";
 		compatible = "simple-audio-card";
 		simple-audio-card,format = "i2s";
@@ -72,7 +67,6 @@
 	};
 
 	hdmi_sound: hdmi0-sound {
-		u-boot,dm-pre-reloc;
 		status = "okay";
 		compatible = "rockchip,hdmi";
 		rockchip,mclk-fs = <128>;
@@ -83,14 +77,12 @@
 	};
 
 	pdmics: dummy-codec {
-		u-boot,dm-pre-reloc;
 		status = "disabled";
 		compatible = "rockchip,dummy-codec";
 		#sound-dai-cells = <0>;
 	};
 
 	pdm_mic_array: pdm-mic-array {
-		u-boot,dm-pre-reloc;
 		status = "disabled";
 		compatible = "simple-audio-card";
 		simple-audio-card,name = "rockchip,pdm-mic-array";
@@ -103,7 +95,6 @@
 	};
 
 	rk809_sound: rk809-sound {
-		u-boot,dm-pre-reloc;
 		status = "okay";
 		compatible = "rockchip,multicodecs-card";
 		rockchip,card-name = "rockchip-rk809";
@@ -117,7 +108,6 @@
 	};
 
 	dc_12v: dc-12v {
-		u-boot,dm-pre-reloc;
 		compatible = "regulator-fixed";
 		regulator-name = "dc_12v";
 		regulator-always-on;
@@ -127,7 +117,6 @@
 	};
 
 	vcc3v3_sys: vcc3v3-sys {
-		u-boot,dm-pre-reloc;
 		compatible = "regulator-fixed";
 		regulator-name = "vcc3v3_sys";
 		regulator-always-on;
@@ -138,7 +127,6 @@
 	};
 
 	vcc5v0_sys: vcc5v0-sys {
-		u-boot,dm-pre-reloc;
 		compatible = "regulator-fixed";
 		regulator-name = "vcc5v0_sys";
 		regulator-always-on;
@@ -149,7 +137,6 @@
 	};
 
 	vcc5v0_host: vcc5v0-host-regulator {
-		u-boot,dm-pre-reloc;
 		compatible = "regulator-fixed";
 		enable-active-high;
 		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
@@ -162,7 +149,6 @@
 	};
 
 	vcc5v0_otg: vcc5v0-otg-regulator {
-		u-boot,dm-pre-reloc;
 		compatible = "regulator-fixed";
 		enable-active-high;
 		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
@@ -175,7 +161,6 @@
 	};
 
 	pcie30_avdd0v9: pcie30-avdd0v9 {
-		u-boot,dm-pre-reloc;
 		compatible = "regulator-fixed";
 		regulator-name = "pcie30_avdd0v9";
 		regulator-always-on;
@@ -186,7 +171,6 @@
 	};
 
 	pcie30_avdd1v8: pcie30-avdd1v8 {
-		u-boot,dm-pre-reloc;
 		compatible = "regulator-fixed";
 		regulator-name = "pcie30_avdd1v8";
 		regulator-always-on;
@@ -197,7 +181,6 @@
 	};
 
 	pcie30_3v3: gpio-regulator {
-		u-boot,dm-pre-reloc;
 		compatible = "regulator-fixed";
 		regulator-name = "pcie30_3v3";
 		regulator-min-microvolt = <3300000>;
@@ -210,7 +193,6 @@
 	};
 
 	sdio_pwrseq: sdio-pwrseq {
-		u-boot,dm-pre-reloc;
 		compatible = "mmc-pwrseq-simple";
 		clocks = <&rk809 1>;
 		clock-names = "ext_clock";
@@ -227,7 +209,6 @@
 	};
 
 	wireless_wlan: wireless-wlan {
-		u-boot,dm-pre-reloc;
 		compatible = "wlan-platdata";
 		clocks = <&rk809 1>;
 		clock-names = "clk_wifi";
@@ -240,7 +221,6 @@
 	};
 
 	gpio_leds: gpio-leds {
-		u-boot,dm-pre-reloc;
 		compatible = "gpio-leds";
 		status = "okay";
 
@@ -253,12 +233,10 @@
 	};
 
 	test-power {
-		u-boot,dm-pre-reloc;
 		status = "okay";
 	};
 
 	em05_modem: em05-modem {
-		u-boot,dm-pre-reloc;
 		compatible = "lte-em05-modem-platdata";
 		pinctrl-names = "default";
 		pinctrl-0 = <&em05_power_en &em05_airplane_mode &em05_reset>;
@@ -270,7 +248,6 @@
 };
 
 &pwm3 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 
 	compatible = "rockchip,remotectl-pwm";
@@ -305,71 +282,58 @@
 };
 
 &cpu0 {
-	u-boot,dm-pre-reloc;
 	cpu-supply = <&vdd_cpu>;
 };
 
 &dfi {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &dmc {
-	u-boot,dm-pre-reloc;
 	center-supply = <&vdd_logic>;
 	status = "okay";
 };
 
 &video_phy0 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &gpu {
-	u-boot,dm-pre-reloc;
 	mali-supply = <&vdd_gpu>;
 	status = "okay";
 };
 
 &hdmi {
-	u-boot,dm-pre-reloc;
 	pinctrl-0 = <&hdmitx_scl &hdmitx_sda>;
 	status = "okay";
 };
 
 &hdmi_in_vp0 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &hdmi_in_vp1 {
-	u-boot,dm-pre-reloc;
 	status = "disabled";
 };
 
 &hdmi_sound {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &vp0_out_hdmi {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &display_subsystem {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &route_hdmi {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	connect = <&vp0_out_hdmi>;
 };
 
 &i2c0 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 
 	vdd_cpu: tcs4525@1c {
@@ -424,44 +388,36 @@
 		vcc9-supply = <&vcc3v3_sys>;
 
 		pwrkey {
-			u-boot,dm-pre-reloc;
 			status = "okay";
 		};
 
 		pinctrl_rk8xx: pinctrl_rk8xx {
-			u-boot,dm-pre-reloc;
 			gpio-controller;
 			#gpio-cells = <2>;
 
 			rk817_slppin_null: rk817_slppin_null {
-				u-boot,dm-pre-reloc;
 				pins = "gpio_slp";
 				function = "pin_fun0";
 			};
 
 			rk817_slppin_slp: rk817_slppin_slp {
-				u-boot,dm-pre-reloc;
 				pins = "gpio_slp";
 				function = "pin_fun1";
 			};
 
 			rk817_slppin_pwrdn: rk817_slppin_pwrdn {
-				u-boot,dm-pre-reloc;
 				pins = "gpio_slp";
 				function = "pin_fun2";
 			};
 
 			rk817_slppin_rst: rk817_slppin_rst {
-				u-boot,dm-pre-reloc;
 				pins = "gpio_slp";
 				function = "pin_fun3";
 			};
 		};
 
 		regulators {
-			u-boot,dm-pre-reloc;
 			vdd_logic: DCDC_REG1 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <500000>;
@@ -471,13 +427,11 @@
 				regulator-initial-mode = <0x2>;
 				regulator-name = "vdd_logic";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vdd_gpu: DCDC_REG2 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <500000>;
@@ -487,25 +441,21 @@
 				regulator-initial-mode = <0x2>;
 				regulator-name = "vdd_gpu";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vcc_ddr: DCDC_REG3 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-initial-mode = <0x2>;
 				regulator-name = "vcc_ddr";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-on-in-suspend;
 				};
 			};
 
 			vdd_npu: DCDC_REG4 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <500000>;
@@ -515,169 +465,143 @@
 				regulator-initial-mode = <0x2>;
 				regulator-name = "vdd_npu";
 				regulator-state-mem {
-				u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vdda0v9_image: LDO_REG1 {
-				u-boot,dm-pre-reloc;
 				regulator-boot-on;
 				regulator-always-on;
 				regulator-min-microvolt = <900000>;
 				regulator-max-microvolt = <900000>;
 				regulator-name = "vdda0v9_image";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vdda_0v9: LDO_REG2 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <900000>;
 				regulator-max-microvolt = <900000>;
 				regulator-name = "vdda_0v9";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vdda0v9_pmu: LDO_REG3 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <900000>;
 				regulator-max-microvolt = <900000>;
 				regulator-name = "vdda0v9_pmu";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-on-in-suspend;
 					regulator-suspend-microvolt = <900000>;
 				};
 			};
 
 			vccio_acodec: LDO_REG4 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <3300000>;
 				regulator-max-microvolt = <3300000>;
 				regulator-name = "vccio_acodec";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vccio_sd: LDO_REG5 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <1800000>;
 				regulator-max-microvolt = <3300000>;
 				regulator-name = "vccio_sd";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vcc3v3_pmu: LDO_REG6 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <3300000>;
 				regulator-max-microvolt = <3300000>;
 				regulator-name = "vcc3v3_pmu";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-on-in-suspend;
 					regulator-suspend-microvolt = <3300000>;
 				};
 			};
 
 			vcca_1v8: LDO_REG7 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <1800000>;
 				regulator-max-microvolt = <1800000>;
 				regulator-name = "vcca_1v8";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vcca1v8_pmu: LDO_REG8 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <1800000>;
 				regulator-max-microvolt = <1800000>;
 				regulator-name = "vcca1v8_pmu";
 					regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-on-in-suspend;
 					regulator-suspend-microvolt = <1800000>;
 				};
 			};
 
 			vcca1v8_image: LDO_REG9 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <1800000>;
 				regulator-max-microvolt = <1800000>;
 				regulator-name = "vcca1v8_image";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vcc_1v8: DCDC_REG5 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-min-microvolt = <1800000>;
 				regulator-max-microvolt = <1800000>;
 				regulator-name = "vcc_1v8";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vcc_3v3: SWITCH_REG1 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-name = "vcc_3v3";
 				regulator-state-mem {
-					u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 
 			vcc3v3_sd: SWITCH_REG2 {
-				u-boot,dm-pre-reloc;
 				regulator-always-on;
 				regulator-boot-on;
 				regulator-name = "vcc3v3_sd";
 				regulator-state-mem {
-				u-boot,dm-pre-reloc;
 					regulator-off-in-suspend;
 				};
 			};
 		};
 
 		rk809_codec: codec {
-			u-boot,dm-pre-reloc;
 			#sound-dai-cells = <0>;
 			compatible = "rockchip,rk809-codec", "rockchip,rk817-codec";
 			clocks = <&cru I2S1_MCLKOUT>;
@@ -696,18 +620,15 @@
 };
 
 &i2c3 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	pinctrl-0 = <&i2c3m1_xfer>;	
 };
 
 &i2c5 {
-	u-boot,dm-pre-reloc;
 	status = "okay";	
 	pinctrl-0 = <&i2c5m0_xfer>;
 
 	hym8563: hym8563@51 {
-		u-boot,dm-pre-reloc;
 		compatible = "haoyu,hym8563";
 		status = "okay";
 		reg = <0x51>;
@@ -730,13 +651,11 @@
 };
 
 &uart8 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	pinctrl-names = "default";
 	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn &uart8m0_rtsn>;
 
 	bluetooth {
-		u-boot,dm-pre-reloc;
 		compatible = "brcm,bcm4345c5";
 		clocks = <&rk809 1>;
 		clock-names = "lpo";
@@ -752,29 +671,23 @@
 };
 
 &pwm8 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &threshold {
-	u-boot,dm-pre-reloc;
 	temperature = <60000>;
 };
 
 &soc_thermal {
-	u-boot,dm-pre-reloc;
 	sustainable-power = <5000>; /* milliwatts */
 	cooling-maps {
-		u-boot,dm-pre-reloc;
 		map3 {
-			u-boot,dm-pre-reloc;
 			trip = <&target>;
 			cooling-device =
 				<&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
 			contribution = <8192>;
 		};
 		map4 {
-			u-boot,dm-pre-reloc;
 			trip = <&threshold>;
 			cooling-device =
 				<&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
@@ -784,12 +697,10 @@
 };
 
 &i2s0_8ch {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &i2s1_8ch {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	rockchip,clk-trcm = <1>;
 	pinctrl-names = "default";
@@ -800,32 +711,26 @@
 };
 
 &iep {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &iep_mmu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &jpegd {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &jpegd_mmu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &mpp_srv {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &pmu_io_domains {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	pmuio2-supply = <&vcc3v3_pmu>;
 	vccio1-supply = <&vccio_acodec>;
@@ -837,44 +742,36 @@
 };
 
 &rk_rga {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &rkvdec {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &rkvdec_mmu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &rkvenc {
-	u-boot,dm-pre-reloc;
 	venc-supply = <&vdd_logic>;
 	status = "okay";
 };
 
 &rkvenc_mmu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &rknpu {
-	u-boot,dm-pre-reloc;
 	rknpu-supply = <&vdd_npu>;
 };
 
 &saradc {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	vref-supply = <&vcca_1v8>;
 };
 
 &sdhci {
-	u-boot,dm-pre-reloc;
 	bus-width = <8>;
 	supports-emmc;
 	non-removable;
@@ -883,7 +780,6 @@
 };
 
 &sdmmc0 {
-	u-boot,dm-pre-reloc;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    u-boot,dm-pre-reloc;
 	max-frequency = <150000000>;
 	supports-sd;
 	bus-width = <4>;
@@ -899,7 +795,6 @@
 };
 
 &sdmmc2 {
-	u-boot,dm-pre-reloc;
 	max-frequency = <150000000>;
 	supports-sdio;
 	bus-width = <4>;
@@ -916,7 +811,6 @@
 };
 
 &sfc {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	max-freq = <50000000>;
 	#address-cells = <1>;
@@ -925,7 +819,6 @@
 	pinctrl-0 = <&fspi_pins>;
 
 	spi_flash: spi-flash@0 {
-		u-boot,dm-pre-reloc;
 		#address-cells = <1>;
 		#size-cells = <0>;
 		compatible = "jedec,spi-nor";
@@ -938,72 +831,60 @@
 };
 
 &tsadc {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &u2phy0_host {
-	u-boot,dm-pre-reloc;
 	phy-supply = <&vcc5v0_host>;
 	status = "okay";
 };
 
 &u2phy0_otg {
-	u-boot,dm-pre-reloc;
 	vbus-supply = <&vcc5v0_otg>;
 	status = "okay";
 };
 
 &u2phy1_host {
-	u-boot,dm-pre-reloc;
 	phy-supply = <&vcc5v0_host>;
 	status = "okay";
 };
 
 &u2phy1_otg {
-	u-boot,dm-pre-reloc;
 	phy-supply = <&vcc5v0_host>;
 	status = "okay";
 };
 
 /* USB OTG/USB Host_1 USB 2.0 Comb PHY_0 */
 &usb2phy0 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 /* USB Host_2/USB Host_3 USB 2.0 Comb PHY_1 */
 &usb2phy1 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 /* USB 2.0 Host_2 EHCI controller for high speed */
 &usb_host0_ehci {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 /* USB 2.0 Host_2 OHCI controller for full/low speed */
 &usb_host0_ohci {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 /* USB 2.0 Host_3 EHCI controller for high speed */
 &usb_host1_ehci {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 /* USB 2.0 Host_3 OHCI controller for full/low speed */
 &usb_host1_ohci {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &usbdrd_dwc3 {
-	u-boot,dm-pre-reloc;
 	dr_mode = "otg";
 	extcon=<&usb2phy0>;
 	maximum-speed = "high-speed";
@@ -1012,102 +893,84 @@
 
 /* USB 3.0 OTG controller */
 &usbdrd30 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &usbhost_dwc3 {
-	u-boot,dm-pre-reloc;
 	maximum-speed = "high-speed";
 	status = "okay";
 };
 
 /* USB 3.0 Host_1 controller */
 &usbhost30 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 /* USB 3.0 OTG/SATA Combo PHY_0 */
 &combphy0_us {
-	u-boot,dm-pre-reloc;
 //	rockchip,dis-u3otg0-port;
 	status = "okay";
 };
 
 /* USB 3.0 Host/SATA/QSGMII Combo PHY_1 */
 &combphy1_usq {
-	u-boot,dm-pre-reloc;
 //	rockchip,dis-u3otg1-port;
 	status = "okay";
 };
 
 &combphy2_psq {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &pcie2x1 {
-	u-boot,dm-pre-reloc;
 	reset-gpios = <&gpio3 RK_PC1 GPIO_ACTIVE_HIGH>;
 	vpcie3v3-supply = <&vcc3v3_sys>;
 	status = "okay";
 };
 
 &sata0 {
-	u-boot,dm-pre-reloc;
 	status = "disabled";
 };
 
 &sata1 {
-	u-boot,dm-pre-reloc;
 	status = "disabled";
 };
 
 &sata2 {
-	u-boot,dm-pre-reloc;
 	status = "disabled";
 };
 
 &xpcs {
-	u-boot,dm-pre-reloc;
 	status="okay";
 };
 
 &vdpu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &vdpu_mmu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &vepu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &vepu_mmu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &vop {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
 	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
 };
 
 &vop_mmu {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &gmac0 {
-	u-boot,dm-pre-reloc;
 	phy-mode = "rgmii";
 	clock_in_out = "output";
 
@@ -1135,7 +998,6 @@
 };
 
 &gmac1 {
-	u-boot,dm-pre-reloc;
 	phy-mode = "rgmii";
 	clock_in_out = "output";
 
@@ -1164,30 +1026,24 @@
 };
 
 &mdio0 {
-	u-boot,dm-pre-reloc;
 	rgmii_phy0: phy@0 {
-		u-boot,dm-pre-reloc;
 		compatible = "ethernet-phy-ieee802.3-c22";
 		reg = <0x0>;
 	};
 };
 
 &mdio1 {
-	u-boot,dm-pre-reloc;
 	rgmii_phy1: phy@0 {
-		u-boot,dm-pre-reloc;
 		compatible = "ethernet-phy-ieee802.3-c22";
 		reg = <0x0>;
 	};
 };
 
 &pcie30phy {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &pcie3x1 {
-	u-boot,dm-pre-reloc;
 	rockchip,bifurcation;
 	reset-gpios = <&gpio3 RK_PA1 GPIO_ACTIVE_HIGH>;
 	pinctrl-0 = <&pcie30x1m1_pins>; 
@@ -1196,7 +1052,6 @@
 };
 
 &pcie3x2 {
-	u-boot,dm-pre-reloc;
 	//rockchip,bifurcation;
 	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
 	pinctrl-0 = <&pcie30x2m1_pins>;
@@ -1205,9 +1060,7 @@
 };
 
 &reserved_memory {
-	u-boot,dm-pre-reloc;
 	ramoops: ramoops@110000 {
-		u-boot,dm-pre-reloc;
 		compatible = "ramoops";
 		reg = <0x0 0x110000 0x0 0xf0000>;
 		record-size = <0x20000>;
@@ -1218,12 +1071,10 @@
 };
 
 &rng {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &rockchip_suspend {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 	rockchip,sleep-debug-en = <1>;
 	rockchip,sleep-mode-config = <
@@ -1243,7 +1094,6 @@
 };
 
 &can1 {
-	u-boot,dm-pre-reloc;
 	assigned-clocks = <&cru CLK_CAN1>;
 	assigned-clock-rates = <100000000>;
 	pinctrl-names = "default";
@@ -1252,146 +1102,114 @@
 };
 
 &pinctrl {
-	u-boot,dm-spl;
 	pmic {
-		u-boot,dm-pre-reloc;
 		pmic_int: pmic_int {
-			u-boot,dm-pre-reloc;
 			rockchip,pins =
 				<0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
 		};
 
 		soc_slppin_gpio: soc_slppin_gpio {
-			u-boot,dm-pre-reloc;
 			rockchip,pins =
 				<0 RK_PA2 RK_FUNC_GPIO &pcfg_output_low>;
 		};
 
 		soc_slppin_slp: soc_slppin_slp {
-			u-boot,dm-pre-reloc;
 			rockchip,pins =
 				<0 RK_PA2 1 &pcfg_pull_none>;
 		};
 
 		soc_slppin_rst: soc_slppin_rst {
-			u-boot,dm-pre-reloc;
 			rockchip,pins =
 				<0 RK_PA2 2 &pcfg_pull_none>;
 		};
 	};
 
 	usb {
-		u-boot,dm-pre-reloc;
 		vcc5v0_host_en: vcc5v0-host-en {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 
 		vcc5v0_otg_en: vcc5v0-otg-en {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
 
 	sdio-pwrseq {
-		u-boot,dm-pre-reloc;
 		wifi_enable_h: wifi-enable-h {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <3 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
 
 	wireless-wlan {
-		u-boot,dm-pre-reloc;
 		wifi_host_wake_irq: wifi-host-wake-irq {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_down>;
 		};
 	};
 
 	bt {
-		u-boot,dm-pre-reloc;
 		bt_enable_h: bt-enable-h {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 
 		bt_host_wake_l: bt-host-wake-l {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 
 		bt_wake_l: bt-wake-l {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
 
 	headphone {
-		u-boot,dm-pre-reloc;
 		hp_det: hp-det {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <3 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
 		};
 	};
 
 	hym8563 {
-		u-boot,dm-pre-reloc;
 		hym8563_int: hym8563-int {
-			u-boot,dm-pre-reloc;
 			rockchip,pins =
 				<0 RK_PD3 0 &pcfg_pull_up>;
 		};
 	};
 
 	leds {
-		u-boot,dm-pre-reloc;
 		user_led: user-led {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <0 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
 
 	lte-em05-modem {
-		u-boot,dm-pre-reloc;
 		em05_airplane_mode: em05-airplane-mode {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <1 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 
 		em05_power_en: em05-power-en {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 
 		em05_reset: em05-reset {
-			u-boot,dm-pre-reloc;
 			rockchip,pins = <0 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
 };
 
 &gpio0 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &gpio1 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &gpio2 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &gpio3 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &gpio4 {
-	u-boot,dm-pre-reloc;
 	status = "okay";
 };
