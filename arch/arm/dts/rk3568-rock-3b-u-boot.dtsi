@@ -54,10 +54,12 @@
 
 &gmac0 {
 	u-boot,dm-pre-reloc;
+	status = "okay";
 };
 
 &gmac1 {
 	u-boot,dm-pre-reloc;
+	status = "okay";
 };
 
 &sata1 {
