@@ -44,6 +44,14 @@
 	u-boot,dm-pre-reloc;
 };
 
+&rgmii_phy0 {
+	u-boot,dm-pre-reloc;	
+};
+
+&rgmii_phy1 {
+	u-boot,dm-pre-reloc;	
+};
+
 &gmac0 {
 	u-boot,dm-pre-reloc;
 };
