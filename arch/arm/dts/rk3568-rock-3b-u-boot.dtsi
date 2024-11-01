@@ -12,10 +12,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&hdmi_sound {
-	u-boot,dm-pre-reloc;
-};
-
 &vp0_out_hdmi {
 	u-boot,dm-pre-reloc;
 };
