@@ -32,6 +32,10 @@
 	u-boot,dm-pre-reloc;
 };
 
+&pcie30_phy_grf {
+	u-boot,dm-pre-reloc;
+};
+
 &mdio0 {
 	u-boot,dm-pre-reloc;
 };
@@ -133,5 +137,49 @@
 };
 
 &sdhci {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_sys{
+	u-boot,dm-pre-reloc;
+};
+
+&dc_12v{
+	u-boot,dm-pre-reloc;
+};
+
+&vcc3v3_sys{
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_sys{
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_host{
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_otg{
+	u-boot,dm-pre-reloc;
+};
+
+&pcie30_avdd0v9{
+	u-boot,dm-pre-reloc;
+};
+
+&pcie30_avdd1v8{
+	u-boot,dm-pre-reloc;
+};
+
+&pcie30_3v3{
+	u-boot,dm-pre-reloc;
+};
+
+&sdio_pwrseq{
+	u-boot,dm-pre-reloc;
+};
+
+&wireless_wlan{
 	u-boot,dm-pre-reloc;
 };
