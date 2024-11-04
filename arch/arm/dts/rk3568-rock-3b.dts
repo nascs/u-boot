@@ -1,4 +1,3 @@
-
 /dts-v1/;
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pwm/pwm.h>
@@ -7,7 +6,6 @@
 #include <dt-bindings/display/drm_mipi_dsi.h>
 #include <dt-bindings/sensor-dev.h>
 #include "rk3568.dtsi"
-#include <dt-bindings/input/input.h>
 
 / {
 	model = "Radxa ROCK 3 Model B";
@@ -144,7 +142,6 @@
 		regulator-name = "vcc5v0_host";
 		regulator-always-on;
 		regulator-boot-on;
-		vin-supply = <&vcc5v0_sys>;
 	};
 
 	vcc5v0_otg: vcc5v0-otg-regulator {
@@ -156,7 +153,6 @@
 		regulator-name = "vcc5v0_otg";
 		regulator-always-on;
 		regulator-boot-on;
-		vin-supply = <&vcc5v0_sys>;
 	};
 
 	pcie30_avdd0v9: pcie30-avdd0v9 {
@@ -553,7 +549,7 @@
 				regulator-min-microvolt = <1800000>;
 				regulator-max-microvolt = <1800000>;
 				regulator-name = "vcca1v8_pmu";
-					regulator-state-mem {
+				regulator-state-mem {
 					regulator-on-in-suspend;
 					regulator-suspend-microvolt = <1800000>;
 				};
@@ -639,14 +635,6 @@
 		interrupt-parent = <&gpio0>;
 		interrupts = <27 IRQ_TYPE_LEVEL_LOW>;
 	};
-};
-
-&crypto {
-	status = "okay";
-};
-
-&uart2 {
-	status = "okay";
 };
 
 &uart8 {
@@ -829,6 +817,10 @@
 	};
 };
 
+&sfc {
+	status = "okay";
+};
+
 &tsadc {
 	status = "okay";
 };
@@ -884,9 +876,7 @@
 };
 
 &usbdrd_dwc3 {
-	dr_mode = "otg";
 	extcon=<&usb2phy0>;
-	maximum-speed = "high-speed";
 	status="okay";
 };
 
@@ -896,7 +886,6 @@
 };
 
 &usbhost_dwc3 {
-	maximum-speed = "high-speed";
 	status = "okay";
 };
 
