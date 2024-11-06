@@ -186,16 +186,6 @@
 			  3300000 0x1>;
 	};
 
-	pcie3x2_3v3: gpio-regulator {
-		compatible = "regulator-fixed";
-		regulator-name = "pcie3x2_3v3";
-		regulator-always-on;
-		regulator-boot-on;
-		regulator-min-microvolt = <100000>;
-		regulator-max-microvolt = <3300000>;
-		vin-supply = <&vcc3v3_sys>;
-	};
-
 	sdio_pwrseq: sdio-pwrseq {
 		compatible = "mmc-pwrseq-simple";
 		clocks = <&rk809 1>;
@@ -1044,7 +1034,7 @@
 	//rockchip,bifurcation;
 	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
 	pinctrl-0 = <&pcie30x2m1_pins>;
-	vpcie3v3-supply = <&pcie3x2_3v3>;
+	vpcie3v3-supply = <&vcc3v3_sys>;
 	status = "okay";
 };
 
