@@ -1,0 +1,195 @@
+#include "rk3568-u-boot.dtsi"
+
+&hdmi {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi_in_vp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi_in_vp1 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp0_out_hdmi {
+	u-boot,dm-pre-reloc;
+};
+
+&pcie3x1 {
+	u-boot,dm-pre-reloc;	
+};
+
+&pcie3x2 {
+	u-boot,dm-pre-reloc;	
+};
+
+&pcie2x1 {
+	u-boot,dm-pre-reloc;	
+};
+
+&pcie30phy {
+	u-boot,dm-pre-reloc;
+};
+
+&pcie30_phy_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&mdio0 {
+	u-boot,dm-pre-reloc;
+};
+
+&mdio1 {
+	u-boot,dm-pre-reloc;
+};
+
+&rgmii_phy0 {
+	u-boot,dm-pre-reloc;	
+};
+
+&rgmii_phy1 {
+	u-boot,dm-pre-reloc;	
+};
+
+&gmac0 {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&gmac1 {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&sata1 {
+	u-boot,dm-pre-reloc;
+};
+
+&sata2 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy0_host {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy0_otg {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy1_host {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy1_otg {
+	u-boot,dm-pre-reloc;
+};
+
+&usb2phy0 {
+	u-boot,dm-pre-reloc;
+};
+
+&usb2phy1 {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host0_ehci {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host0_ohci {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host1_ehci {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host1_ohci {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdrd_dwc3 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdrd30 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbhost_dwc3 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbhost30 {
+	u-boot,dm-pre-reloc;
+};
+
+&combphy0_us {
+	u-boot,dm-pre-reloc;
+};
+
+&combphy1_usq {
+	u-boot,dm-pre-reloc;
+};
+
+&combphy2_psq {
+	u-boot,dm-pre-reloc;
+};
+
+&sdmmc2 {
+	u-boot,dm-pre-reloc;
+};
+
+&sdmmc0 {
+	u-boot,dm-pre-reloc;
+};
+
+&sdhci {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_sys{
+	u-boot,dm-pre-reloc;
+};
+
+&dc_12v{
+	u-boot,dm-pre-reloc;
+};
+
+&vcc3v3_sys{
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_sys{
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_host{
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_otg{
+	u-boot,dm-pre-reloc;
+};
+
+&pcie30_avdd0v9{
+	u-boot,dm-pre-reloc;
+};
+
+&pcie30_avdd1v8{
+	u-boot,dm-pre-reloc;
+};
+
+&pcie30_3v3{
+	u-boot,dm-pre-reloc;
+};
+
+&sdio_pwrseq{
+	u-boot,dm-pre-reloc;
+};
+
+&wireless_wlan{
+	u-boot,dm-pre-reloc;
+};
