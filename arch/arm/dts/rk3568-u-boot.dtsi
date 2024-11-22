@@ -5,14 +5,6 @@
  */
 
 / {
-	aliases {
-		ethernet0 = &gmac0;
-		ethernet1 = &gmac1;
-		mmc0 = &sdhci;
-		mmc1 = &sdmmc0;
-		mmc2 = &sdmmc1;
-	};
-
 	chosen {
 		stdout-path = &uart2;
 		u-boot,spl-boot-order = &sdmmc0, &sdhci, &nandc0, &spi_nand, &spi_nor;
