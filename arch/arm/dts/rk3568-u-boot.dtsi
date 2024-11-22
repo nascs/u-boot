@@ -204,10 +204,12 @@
 };
 
 &sdhci {
-	bus-width = <8>;
 	u-boot,dm-spl;
-	/delete-property/ pinctrl-names;
-	/delete-property/ pinctrl-0;
+	compatible = "rockchip,dwcmshc-sdhci", "snps,dwcmshc-sdhci";
+	/delete-property/ reset-names;
+	/delete-property/ resets;
+	assigned-clocks = <&cru BCLK_EMMC>, <&cru TCLK_EMMC>;
+	assigned-clock-rates = <200000000>, <24000000>;
 	mmc-hs200-1_8v;
 	status = "okay";
 };
