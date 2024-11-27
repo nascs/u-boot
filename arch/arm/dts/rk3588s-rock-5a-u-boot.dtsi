@@ -78,7 +78,7 @@
 	u-boot,dm-spl;
 };
 
-&&cpu_b0 {
+&cpu_b0 {
 	u-boot,dm-spl;
 };
 
@@ -101,7 +101,6 @@
 &vdd_cpu_big1_mem_s0 {
 	u-boot,dm-spl;
 };
-
 
 &dfi {
 	u-boot,dm-pre-reloc;
@@ -211,7 +210,6 @@
 
 &hdmi0 {
 	u-boot,dm-pre-reloc;
-	pinctrl-0 = <& & & &>;
 };
 
 &hdmim0_tx0_cec {
@@ -373,7 +371,7 @@
 
 &vcc5v0_otg {
 	u-boot,dm-pre-reloc;	
-}
+};
 
 &usbdrd3_0 {
 	u-boot,dm-pre-reloc;
