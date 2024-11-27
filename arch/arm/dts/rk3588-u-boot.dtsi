@@ -22,6 +22,54 @@
 		compatible = "rockchip,rk3588-secure-otp";
 		reg = <0x0 0xfe3a0000 0x0 0x4000>;
 	};
+
+	reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		cma {
+			compatible = "shared-dma-pool";
+			reusable;
+			size = <0x0 (8 * 0x100000)>;
+			linux,cma-default;
+		};
+
+		drm_logo: drm-logo@00000000 {
+			compatible = "rockchip,drm-logo";
+			reg = <0x0 0x0 0x0 0x0>;
+		};
+
+		drm_cubic_lut: drm-cubic-lut@00000000 {
+			compatible = "rockchip,drm-cubic-lut";
+			reg = <0x0 0x0 0x0 0x0>;
+		};
+
+		ramoops: ramoops@110000 {
+			compatible = "ramoops";
+			/* 0x110000 to 0x1f0000 is for ramoops */
+			reg = <0x0 0x110000 0x0 0xe0000>;
+			boot-log-size = <0x8000>;	/* do not change */
+			boot-log-count = <0x1>;		/* do not change */
+			console-size = <0x80000>;
+			pmsg-size = <0x30000>;
+			ftrace-size = <0x00000>;
+			record-size = <0x14000>;
+		};
+
+		minidump_smem: minidump-smem@1f0000 {
+			reg = <0x0 0x1f0000 0x0 0x100>;		/* do not change */
+			no-map;
+			status = "disabled";
+		};
+
+		minidump_mem: minidump-mem@c000000 {
+			reg = <0x0 0x0c000000 0x0 0x2000000>;	/* changing according to your project */
+			no-map;
+			status = "disabled";
+		};
+
+	};
 };
 
 &otp {
@@ -56,6 +104,14 @@
 	status = "okay";
 };
 
+&spll {
+	u-boot,dm-spl;
+};
+
+&xin32k {
+	u-boot,dm-spl;
+};
+
 &scmi {
 	u-boot,dm-spl;
 };
@@ -77,6 +133,14 @@
 	status = "okay";
 };
 
+&aclk_usb {
+	u-boot,dm-pre-reloc;
+};
+
+&hclk_vo1{
+	u-boot,dm-pre-reloc;
+};
+
 &cru {
 	u-boot,dm-spl;
 	status = "okay";
@@ -92,34 +156,117 @@
 	status = "okay";
 };
 
+&vo1_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&pclk_vo1_grf {
+	u-boot,dm-pre-reloc;
+};
+
 &sys_grf {
 	u-boot,dm-spl;
 	status = "okay";
 };
 
-&pcie30_phy_grf {
+&usb2phy3_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&usb2phy2_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy0_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&vop_opp_table{
+	u-boot,dm-pre-reloc;
+};
+
+&vop_grf{
+	u-boot,dm-pre-reloc;
+};
+
+&vo1_grf{
+	u-boot,dm-pre-reloc;
+};
+
+&vop_out {
+	u-boot,dm-pre-reloc;	
+};
+
+&vop_opp_table{
+	u-boot,dm-pre-reloc;
+};
+
+&vop_mmu{
 	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
-&php_grf {
+&vop{
 	u-boot,dm-pre-reloc;
 	status = "okay";
+};
+
+&hdmi0_in {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi_clk0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp0_out_hdmi0 {
+	u-boot,dm-pre-reloc;
+};
+
+&pmu {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_cec {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_hpd {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_scl {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_sda {
+	u-boot,dm-pre-reloc;
+};
+
+// &pcie30_phy_grf {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
+
+&php_grf {
+	u-boot,dm-spl;
 };
 
 &pipe_phy0_grf {
 	u-boot,dm-pre-reloc;
-	status = "okay";
 };
 
-&pipe_phy1_grf {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
+// &pipe_phy1_grf {
+// 	u-boot,dm-pre-reloc;
+// 	status = "okay";
+// };
 
 &pipe_phy2_grf {
 	u-boot,dm-pre-reloc;
-	status = "okay";
 };
 
 &uart2 {
@@ -129,6 +276,10 @@
 
 &hw_decompress {
 	u-boot,dm-spl;
+	status = "okay";
+};
+
+&dfi {
 	status = "okay";
 };
 
@@ -198,22 +349,32 @@
 	status = "okay";
 };
 
-&usb_grf{
+&usb_grf {
 	u-boot,dm-pre-reloc;
 };
 
-&usbdpphy0_grf{
+&vo0_grf {
+	u-boot,dm-pre-reloc;	
+};
+
+&usbdpphy0_grf {
 	u-boot,dm-pre-reloc;
 };
 
-&usbdp_phy0{
+&usbdp_phy0 {
 	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
-&usbdp_phy0_u3{
+&dmc {
 	u-boot,dm-pre-reloc;
+	center-supply = <&vdd_ddr_s0>;
+	mem-supply = <&vdd_log_s0>;
 	status = "okay";
+};
+
+&dmc_opp_table {
+	status = "disabled";
 };
 
 /* Support SPL-PINCTRL:
