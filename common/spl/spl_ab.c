@@ -416,12 +416,15 @@ int spl_ab_decrease_reset(struct blk_desc *dev_desc)
 
 int spl_ab_bootargs_append_slot(void *fdt, char *slot)
 {
-	char *str;
-	int len, ret = 0;
+
+	int ret = 0;
 
 	if (!slot)
 		return 0;
 
+#ifdef ANDROID_ARG_SLOT_SUFFIX
+	int len;
+	char *str;
 	len = strlen(ANDROID_ARG_SLOT_SUFFIX) + strlen(slot) + 1;
 	str = malloc(len);
 	if (!str)
@@ -433,6 +436,9 @@ int spl_ab_bootargs_append_slot(void *fdt, char *slot)
 		printf("Append slot info to bootargs fail");
 
 	free(str);
+#else
+	printf("ANDROID_ARG_SLOT_SUFFIX not defined. Skipping slot append.\n");
+#endif
 
 	return ret;
 }
