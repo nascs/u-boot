@@ -5,8 +5,6 @@
  *
  */
 
-/dts-v1/;
-
 #include "rk3588-u-boot.dtsi"
 
 &vcc12v_dcin {
