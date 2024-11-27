@@ -1,0 +1,494 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright (c) 2024 Rockchip Electronics Co., Ltd.
+ * Copyright (c) 2024 Radxa Computer (Shenzhen) Co., Ltd.
+ *
+ */
+
+/dts-v1/;
+
+#include "rk3588-u-boot.dtsi"
+
+&vcc12v_dcin {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_sys {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc_5v0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc_1v1_nldo_s3 {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_host {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_otg {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc3v3_pcie {
+	u-boot,dm-pre-reloc;
+};
+
+&i2c0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vdd_cpu_big0_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vdd_cpu_big1_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&i2c0m2_xfer {
+	u-boot,dm-pre-reloc;
+};
+
+&i2c2 {
+	u-boot,dm-pre-reloc;
+};
+
+&vdd_npu_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&i2c2m0_xfer {
+	u-boot,dm-pre-reloc;
+};
+
+
+/* CPU */
+
+&cpu_l0 {
+	u-boot,dm-spl;
+};
+
+&vdd_cpu_lit_s0 {
+	u-boot,dm-spl;
+};
+
+&vdd_cpu_lit_mem_s0 {
+	u-boot,dm-spl;
+};
+
+&&cpu_b0 {
+	u-boot,dm-spl;
+};
+
+&vdd_cpu_big0_s0 {
+	u-boot,dm-spl;
+};
+
+&vdd_cpu_big0_mem_s0 {
+	u-boot,dm-spl;
+};
+
+&cpu_b2 {
+	u-boot,dm-spl;
+};
+
+&vdd_cpu_big1_s0 {
+	u-boot,dm-spl;
+};
+
+&vdd_cpu_big1_mem_s0 {
+	u-boot,dm-spl;
+};
+
+
+&dfi {
+	u-boot,dm-pre-reloc;
+};
+
+&vdd_ddr_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vdd_log_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&dmc {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvdec_ccu {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvdec0 {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvdec0_mmu {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvdec1 {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvdec1_mmu {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvenc_ccu {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvenc0 {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvenc0_mmu {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvenc1 {
+	u-boot,dm-pre-reloc;
+};
+
+&rkvenc1_mmu {
+	u-boot,dm-pre-reloc;
+};
+
+&saradc {
+	u-boot,dm-pre-reloc;
+	vref-supply = <&avcc_1v8_s0>;
+};
+
+/* Storage */
+/* eMMC */
+
+&sdhci {
+	u-boot,dm-pre-reloc;
+};
+
+/* SD */
+
+&vcc_3v3_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vccio_sd_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&sdmmc_bus4 {
+	u-boot,dm-pre-reloc;
+};
+
+&sdmmc_clk {
+	u-boot,dm-pre-reloc;
+};
+
+&sdmmc_cmd {
+	u-boot,dm-pre-reloc;
+};
+
+&sdmmc_det {
+	u-boot,dm-pre-reloc;
+};
+
+&sdmmc {
+	u-boot,dm-pre-reloc;
+};
+
+/* ADC */
+
+&tsadc {
+	u-boot,dm-pre-reloc;
+};
+
+/* HDMI */
+
+&hdmi0 {
+	u-boot,dm-pre-reloc;
+	pinctrl-0 = <& & & &>;
+};
+
+&hdmim0_tx0_cec {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim1_tx0_hpd {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_scl {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_sda {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi0_in_vp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&route_hdmi0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi0 {
+	u-boot,dm-pre-reloc;
+};
+
+/* DP */
+
+&dp0_hpd {
+	u-boot,dm-pre-reloc;
+};
+
+&dp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&dp0_in_vp2 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp2_out_dp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&route_dp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&spdif_tx2 {
+	u-boot,dm-pre-reloc;
+};
+
+&vdpu {
+	u-boot,dm-pre-reloc;
+};
+
+&vdpu_mmu {
+	u-boot,dm-pre-reloc;
+};
+
+/* Video Ports */
+
+&vop {
+	u-boot,dm-pre-reloc;
+};
+
+&vop_mmu {
+	u-boot,dm-pre-reloc;
+};
+
+&vepu {
+	u-boot,dm-pre-reloc;
+};
+
+/* vp0 & vp1 splice for 8K output */
+&vp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp1 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp2 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp3 {
+	u-boot,dm-pre-reloc;
+};
+
+&display_subsystem {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi_clk0 {
+	u-boot,dm-pre-reloc;
+};
+
+/* USB */
+
+&usb_host0_ehci {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host0_ohci {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy2 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy2_host {
+	u-boot,dm-pre-reloc;
+	phy-supply = <&vcc5v0_host>;
+};
+
+&usb_host1_ehci {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host1_ohci {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy3 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy3_host {
+	phy-supply = <&vcc5v0_host>;
+	u-boot,dm-pre-reloc;
+};
+
+&usbhost3_0 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbhost_dwc3_0 {
+	u-boot,dm-pre-reloc;
+};
+
+&combphy2_psu {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy0 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy0_otg {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_otg {
+	u-boot,dm-pre-reloc;	
+}
+
+&usbdrd3_0 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdrd_dwc3_0 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy0_u3 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy0 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy0_dp {
+	u-boot,dm-pre-reloc;
+};
+
+/* PCIe */
+
+&combphy0_ps {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc3v3_pcie {
+	u-boot,dm-pre-reloc;
+};
+
+&pcie2x1l2 {
+	u-boot,dm-pre-reloc;
+};
+
+/* Ethernet */
+
+&mdio1 {
+	u-boot,dm-pre-reloc;
+};
+
+&mdio1 {
+	u-boot,dm-pre-reloc;
+};
+
+&rgmii_phy1 {
+	u-boot,dm-pre-reloc;
+};
+
+&gmac1_miim {
+	u-boot,dm-pre-reloc;
+};
+
+&gmac1_tx_bus2 {
+	u-boot,dm-pre-reloc;
+};
+
+&gmac1_rx_bus2 {
+	u-boot,dm-pre-reloc;
+};
+
+&gmac1_rgmii_clk {
+	u-boot,dm-pre-reloc;
+};
+
+&gmac1_rgmii_bus {
+	u-boot,dm-pre-reloc;
+};
+
+&rgmii_phy1 {
+	u-boot,dm-pre-reloc;
+};
+
+&gmac1 {
+	u-boot,dm-pre-reloc;
+};
+
+&avdd_0v75_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&avcc_1v8_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc_1v8_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc_3v3_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vdd_log_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vdd_ddr_pll_s0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc_5v0_en {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_host_en {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_otg_en {
+	u-boot,dm-pre-reloc;
+};
+
+&dp0_hpd {
+	u-boot,dm-pre-reloc;
+};
