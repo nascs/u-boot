@@ -63,9 +63,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-
-/* CPU */
-
 &cpu_l0 {
 	u-boot,dm-spl;
 };
@@ -118,59 +115,13 @@
 	u-boot,dm-pre-reloc;
 };
 
-&rkvdec_ccu {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvdec0 {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvdec0_mmu {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvdec1 {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvdec1_mmu {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvenc_ccu {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvenc0 {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvenc0_mmu {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvenc1 {
-	u-boot,dm-pre-reloc;
-};
-
-&rkvenc1_mmu {
-	u-boot,dm-pre-reloc;
-};
-
 &saradc {
 	u-boot,dm-pre-reloc;
-	vref-supply = <&avcc_1v8_s0>;
 };
-
-/* Storage */
-/* eMMC */
 
 &sdhci {
 	u-boot,dm-pre-reloc;
 };
-
-/* SD */
 
 &vcc_3v3_s0 {
 	u-boot,dm-pre-reloc;
@@ -200,13 +151,9 @@
 	u-boot,dm-pre-reloc;
 };
 
-/* ADC */
-
 &tsadc {
 	u-boot,dm-pre-reloc;
 };
-
-/* HDMI */
 
 &hdmi0 {
 	u-boot,dm-pre-reloc;
@@ -240,8 +187,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-/* DP */
-
 &dp0_hpd {
 	u-boot,dm-pre-reloc;
 };
@@ -262,10 +207,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&spdif_tx2 {
-	u-boot,dm-pre-reloc;
-};
-
 &vdpu {
 	u-boot,dm-pre-reloc;
 };
@@ -273,8 +214,6 @@
 &vdpu_mmu {
 	u-boot,dm-pre-reloc;
 };
-
-/* Video Ports */
 
 &vop {
 	u-boot,dm-pre-reloc;
@@ -284,11 +223,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&vepu {
-	u-boot,dm-pre-reloc;
-};
-
-/* vp0 & vp1 splice for 8K output */
 &vp0 {
 	u-boot,dm-pre-reloc;
 };
@@ -313,8 +247,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-/* USB */
-
 &usb_host0_ehci {
 	u-boot,dm-pre-reloc;
 };
@@ -329,7 +261,6 @@
 
 &u2phy2_host {
 	u-boot,dm-pre-reloc;
-	phy-supply = <&vcc5v0_host>;
 };
 
 &usb_host1_ehci {
@@ -345,7 +276,6 @@
 };
 
 &u2phy3_host {
-	phy-supply = <&vcc5v0_host>;
 	u-boot,dm-pre-reloc;
 };
 
@@ -393,8 +323,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-/* PCIe */
-
 &combphy0_ps {
 	u-boot,dm-pre-reloc;
 };
@@ -406,8 +334,6 @@
 &pcie2x1l2 {
 	u-boot,dm-pre-reloc;
 };
-
-/* Ethernet */
 
 &mdio1 {
 	u-boot,dm-pre-reloc;
@@ -446,45 +372,5 @@
 };
 
 &gmac1 {
-	u-boot,dm-pre-reloc;
-};
-
-&avdd_0v75_s0 {
-	u-boot,dm-pre-reloc;
-};
-
-&avcc_1v8_s0 {
-	u-boot,dm-pre-reloc;
-};
-
-&vcc_1v8_s0 {
-	u-boot,dm-pre-reloc;
-};
-
-&vcc_3v3_s0 {
-	u-boot,dm-pre-reloc;
-};
-
-&vdd_log_s0 {
-	u-boot,dm-pre-reloc;
-};
-
-&vdd_ddr_pll_s0 {
-	u-boot,dm-pre-reloc;
-};
-
-&vcc_5v0_en {
-	u-boot,dm-pre-reloc;
-};
-
-&vcc5v0_host_en {
-	u-boot,dm-pre-reloc;
-};
-
-&vcc5v0_otg_en {
-	u-boot,dm-pre-reloc;
-};
-
-&dp0_hpd {
 	u-boot,dm-pre-reloc;
 };
