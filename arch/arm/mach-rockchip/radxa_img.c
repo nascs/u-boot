@@ -112,7 +112,7 @@ int radxa_read_bmp_file(void *buf, const char *name) {
 			continue;
 		}
 
-		if (stricmp(volume_label, "config") == 0) {
+		if (strncasecmp(volume_label, "config", strlen("config")) == 0) {
 			if (fat_set_blk_dev(desc, &part_info) != 0) {
 				printf("Failed to set block device for FAT on partition %d\n", part_num);
 				return -ENODEV;
