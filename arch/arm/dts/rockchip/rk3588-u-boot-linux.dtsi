@@ -1,0 +1,87 @@
+#include "../rk3588-u-boot.dtsi"
+
+
+&aclk_usb {
+	u-boot,dm-pre-reloc;
+};
+
+&hclk_vo1{
+	u-boot,dm-pre-reloc;
+};
+
+&pclk_vo1_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&vop_opp_table{
+	u-boot,dm-pre-reloc;
+};
+
+&vop_grf{
+	u-boot,dm-pre-reloc;
+};
+
+&vop_out {
+	u-boot,dm-pre-reloc;	
+};
+
+&vop_mmu{
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&vop {
+	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&hdmi0_in {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi_clk0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp0_out_hdmi0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_cec {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_hpd {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_scl {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx0_sda {
+	u-boot,dm-pre-reloc;
+};
+
+&dfi {
+	status = "okay";
+};
+
+&dmc {
+	u-boot,dm-pre-reloc;
+	center-supply = <&vdd_ddr_s0>;
+	mem-supply = <&vdd_log_s0>;
+	status = "okay";
+};
+
+&dmc_opp_table {
+	status = "disabled";
+};
+
+&dmc_opp_table {
+	status = "disabled";
+};
