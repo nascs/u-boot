@@ -1,5 +1,11 @@
-#include "../rk3588-u-boot.dtsi"
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright (c) 2024 Rockchip Electronics Co., Ltd.
+ * Copyright (c) 2024 Radxa Computer (Shenzhen) Co., Ltd.
+ *
+ */
 
+#include "../rk3588s-u-boot.dtsi"
 
 &aclk_usb {
 	u-boot,dm-pre-reloc;
@@ -84,4 +90,45 @@
 
 &dmc_opp_table {
 	status = "disabled";
+};
+
+&spll {
+	u-boot,dm-spl;
+};
+
+&xin32k {
+	u-boot,dm-spl;
+};
+
+&vo1_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&usb2phy3_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&usb2phy2_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy0_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&vo1_grf{
+	u-boot,dm-pre-reloc;
+};
+
+&pmu {
+	u-boot,dm-pre-reloc;
+};
+
+&vo0_grf{
+	u-boot,dm-pre-reloc;	
+};
+
+&usbdp_phy0{
+	u-boot,dm-pre-reloc;
+	status = "okay";
 };

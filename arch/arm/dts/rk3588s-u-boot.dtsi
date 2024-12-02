@@ -97,22 +97,12 @@
 	status = "okay";
 };
 
-&pcie30_phy_grf {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
-
 &php_grf {
 	u-boot,dm-pre-reloc;
 	status = "okay";
 };
 
 &pipe_phy0_grf {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
-
-&pipe_phy1_grf {
 	u-boot,dm-pre-reloc;
 	status = "okay";
 };

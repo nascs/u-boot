@@ -5,7 +5,7 @@
  *
  */
 
-#include "rockchip/rk3588-u-boot-linux.dtsi"
+#include "rk3588s-radxa-cm5-u-boot.dtsi"
 
 &vcc12v_dcin {
 	u-boot,dm-pre-reloc;
