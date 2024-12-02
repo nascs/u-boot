@@ -5,7 +5,7 @@
 	u-boot,dm-pre-reloc;
 };
 
-&hclk_vo1{
+&hclk_vo1 {
 	u-boot,dm-pre-reloc;
 };
 
@@ -13,11 +13,11 @@
 	u-boot,dm-pre-reloc;
 };
 
-&vop_opp_table{
+&vop_opp_table {
 	u-boot,dm-pre-reloc;
 };
 
-&vop_grf{
+&vop_grf {
 	u-boot,dm-pre-reloc;
 };
 
@@ -25,7 +25,7 @@
 	u-boot,dm-pre-reloc;	
 };
 
-&vop_mmu{
+&vop_mmu {
 	u-boot,dm-pre-reloc;
 	status = "okay";
 };
