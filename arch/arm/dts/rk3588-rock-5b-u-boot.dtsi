@@ -25,10 +25,287 @@
 	u-boot,dm-pre-reloc;
 };
 
-&pcie3x4 {
+&display_subsystem {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi_clk0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi_clk1 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi0_in_vp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi0_in_vp1 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi0_in_vp2 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi0_sound {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi1 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx1_cec {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim0_tx1_hpd {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim1_tx1_scl {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim1_tx1_sda {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi1_in_vp0 {
+	status = "disabled";
+};
+
+&hdmi1_in_vp1 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmi1_in_vp2 {
+	status = "disabled";
+};
+
+&hdmi1_sound {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi0 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdptxphy_hdmi1 {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmirx_ctrler {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim1_rx_cec {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim1_rx_hpdin {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim1_rx_scl {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmim1_rx_sda {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmirx_det {
+	u-boot,dm-pre-reloc;
+};
+
+
+&vop {
+	u-boot,dm-pre-reloc;
+};
+
+&vop_mmu {
+	u-boot,dm-pre-reloc;
+};
+
+&vepu {
+	u-boot,dm-pre-reloc;
+};
+
+&vp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp1 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp2 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp3 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy2 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy2_host {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy3 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy3_host {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host0_ehci {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host0_ohci {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host1_ehci {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_host1_ohci {
+	u-boot,dm-pre-reloc;
+};
+
+&usbhost3_0 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbhost_dwc3_0 {
+	u-boot,dm-pre-reloc;
+};
+
+&combphy2_psu {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy1 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy1_otg {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdrd3_1{
+	u-boot,dm-pre-reloc;
+};
+
+&usbdrd_dwc3_1{
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy1 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy1_u3 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy0 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy0_otg {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdrd3_0 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdrd_dwc3_0 {
+	u-boot,dm-pre-reloc;
+};
+
+&dwc3_0_role_switch {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy0 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy0_orientation_switch {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy0_dp_altmode_mux {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy0_u3 {
+	u-boot,dm-pre-reloc;
+};
+
+&usbdp_phy0_dp {
+	u-boot,dm-pre-reloc;
+};
+
+&dp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&dp0_in_vp2 {
+	u-boot,dm-pre-reloc;
+};
+
+&route_dp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vp2_out_dp0 {
+	u-boot,dm-pre-reloc;
+};
+
+&combphy0_ps {
+	u-boot,dm-pre-reloc;
+};
+
+&pcie2x1l2 {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc3v3_pcie2x1l2 {
+	u-boot,dm-pre-reloc;
+};
+
+&pcie2x1l0 {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc3v3_pcie2x1l0 {
+	u-boot,dm-pre-reloc;
+};
+
+&combphy1_ps {
 	u-boot,dm-pre-reloc;
 };
 
 &pcie30phy {
+	u-boot,dm-pre-reloc;
+};
+
+&pcie3x4 {
 	u-boot,dm-pre-reloc;
 };
