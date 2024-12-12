@@ -16,9 +16,9 @@
 #include <dt-bindings/display/rockchip_vop.h>
 #include <dt-bindings/sensor-dev.h>
 #include "dt-bindings/usb/pd.h"
-#include "rk3588.dtsi"
-#include "rk3588-rk806-single.dtsi"
-#include "rk3588-linux.dtsi"
+#include "rockchip/rk3588.dtsi"
+#include "rockchip/rk3588-rk806-single.dtsi"
+#include "rockchip/rk3588-linux.dtsi"
 
 / {
 	model = "Radxa ROCK 5B";
