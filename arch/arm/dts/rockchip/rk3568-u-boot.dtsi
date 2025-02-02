@@ -28,6 +28,14 @@
 	};
 };
 
+&scmi {
+	u-boot,dm-pre-reloc;
+};
+
+&scmi_clk {
+	u-boot,dm-pre-reloc;
+};
+
 &psci {
 	u-boot,dm-pre-reloc;
 	status = "okay";
