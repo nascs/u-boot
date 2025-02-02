@@ -889,6 +889,7 @@
 
 &usbdrd_dwc3 {
 	extcon=<&usb2phy0>;
+	maximum-speed = "high-speed";
 	status="okay";
 };
 
@@ -898,6 +899,7 @@
 };
 
 &usbhost_dwc3 {
+	maximum-speed = "high-speed";
 	status = "okay";
 };
 
