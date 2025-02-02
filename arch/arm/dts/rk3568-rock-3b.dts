@@ -251,6 +251,10 @@
 	};
 };
 
+&crypto {
+	status = "okay";
+};
+
 &pwm3 {
 	status = "okay";
 

@@ -193,3 +193,7 @@
 &wireless_wlan{
 	u-boot,dm-pre-reloc;
 };
+
+&crypto {
+	u-boot,dm-pre-reloc;
+};
