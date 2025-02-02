@@ -28,6 +28,10 @@
 	};
 };
 
+&firmware {
+	u-boot,dm-pre-reloc;
+};
+
 &scmi {
 	u-boot,dm-pre-reloc;
 };
