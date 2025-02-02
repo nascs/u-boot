@@ -462,6 +462,14 @@
 	u-boot,dm-spl;
 };
 
+&gpio3 {
+	u-boot,dm-spl;
+};
+
+&gpio4 {
+	u-boot,dm-spl;
+};
+
 &pcfg_pull_none_drv_level_1 {
 	u-boot,dm-spl;
 };

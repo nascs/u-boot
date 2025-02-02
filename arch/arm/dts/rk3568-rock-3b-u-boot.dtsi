@@ -54,12 +54,10 @@
 
 &gmac0 {
 	u-boot,dm-pre-reloc;
-	status = "okay";
 };
 
 &gmac1 {
 	u-boot,dm-pre-reloc;
-	status = "okay";
 };
 
 &sata1 {
@@ -83,6 +81,14 @@
 };
 
 &u2phy1_otg {
+	u-boot,dm-pre-reloc;
+};
+
+&usb2phy0_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&usb2phy1_grf {
 	u-boot,dm-pre-reloc;
 };
 
