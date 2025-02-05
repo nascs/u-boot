@@ -1,5 +1,17 @@
 #include "rockchip/rk3568-u-boot.dtsi"
 
+&vdd_logic {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmitx_scl {
+	u-boot,dm-pre-reloc;
+};
+
+&hdmitx_sda {
+	u-boot,dm-pre-reloc;
+};
+
 &hdmi {
 	u-boot,dm-pre-reloc;
 };
@@ -172,7 +184,11 @@
 	u-boot,dm-pre-reloc;
 };
 
-&vcc5v0_host{
+&vcc5v0_host {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc5v0_host_en{
 	u-boot,dm-pre-reloc;
 };
 
