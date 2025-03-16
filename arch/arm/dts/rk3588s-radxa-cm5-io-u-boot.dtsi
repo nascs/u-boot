@@ -114,3 +114,9 @@
 &vcc_1v8_s0 {
 	u-boot,dm-pre-reloc;
 };
+
+// 10 inch display
+
+&backlight {
+	u-boot,dm-pre-reloc;
+};
