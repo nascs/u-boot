@@ -123,3 +123,15 @@
 &backlight {
 	u-boot,dm-pre-reloc;
 };
+
+&dsi1_lcd_rst_gpio {
+	u-boot,dm-pre-reloc;
+};
+
+&vcc3v3_sys_en {
+	u-boot,dm-pre-reloc;
+};
+
+&vdd5v_lcd_en {
+	u-boot,dm-pre-reloc;
+};
