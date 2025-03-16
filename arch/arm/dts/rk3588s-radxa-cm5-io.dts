@@ -52,6 +52,17 @@
 		vin-supply = <&vcc12v_dcin>;
 	};
 
+	vcc_lcd1_3v3: vcc-lcd-3v3 {
+		status = "okay";
+		compatible = "regulator-fixed";
+		regulator-name = "vcc_lcd1_3v3";
+		regulator-always-on;
+		regulator-boot-on;
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		vin-supply = <&vcc3v3_sys>;
+	};
+
 	backlight: backlight {
 		status = "okay";
 		compatible = "pwm-backlight";

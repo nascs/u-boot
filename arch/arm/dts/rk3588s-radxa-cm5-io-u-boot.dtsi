@@ -116,6 +116,9 @@
 };
 
 // 10 inch display
+&vcc_lcd1_3v3 {
+	u-boot,dm-pre-reloc;
+};
 
 &backlight {
 	u-boot,dm-pre-reloc;
