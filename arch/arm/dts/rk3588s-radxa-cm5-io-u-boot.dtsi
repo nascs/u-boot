@@ -23,14 +23,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&hdmi0_sound {
-	u-boot,dm-pre-reloc;
-};
-
-&dp0_sound {
-	u-boot,dm-pre-reloc;
-};
-
 &vcc3v3_sys {
 	u-boot,dm-pre-reloc;
 };
@@ -107,15 +99,7 @@
 	u-boot,dm-pre-reloc;
 };
 
-&spdif_tx2 {
-	u-boot,dm-pre-reloc;
-};
-
 &hdptxphy_hdmi0 {
-	u-boot,dm-pre-reloc;
-};
-
-&i2s5_8ch {
 	u-boot,dm-pre-reloc;
 };
 

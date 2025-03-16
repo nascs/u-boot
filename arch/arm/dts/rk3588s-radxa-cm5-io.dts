@@ -61,26 +61,6 @@
 		vin-supply = <&vcc5v0_sys>;
 	};
 
-	hdmi0_sound: hdmi0-sound {
-		status = "okay";
-		compatible = "rockchip,hdmi";
-		rockchip,mclk-fs = <128>;
-		rockchip,card-name = "rockchip-hdmi0";
-		rockchip,cpu = <&i2s5_8ch>;
-		rockchip,codec = <&hdmi0>;
-		rockchip,jack-det;
-	};
-
-	dp0_sound: dp0-sound {
-		status = "okay";
-		compatible = "rockchip,hdmi";
-		rockchip,card-name= "rockchip-hdmi1";
-		rockchip,mclk-fs = <512>;
-		rockchip,cpu = <&spdif_tx2>;
-		rockchip,codec = <&dp0 1>;
-		rockchip,jack-det;
-	};
-
 	vcc3v3_sys: vcc3v3-sys {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc3v3_sys";
@@ -134,28 +114,6 @@
 		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
 		regulator-boot-on;
 		regulator-always-on;
-	};
-
-	es8316_sound: es8316-sound {
-		status = "okay";
-		compatible = "rockchip,multicodecs-card";
-		rockchip,card-name = "rockchip-es8316";
-		rockchip,format = "i2s";
-		rockchip,mclk-fs = <256>;
-		rockchip,cpu = <&i2s0_8ch>;
-		rockchip,codec = <&es8316>;
-		poll-interval = <100>;
-		io-channels = <&saradc 3>;
-		io-channel-names = "adc-detect";
-		keyup-threshold-microvolt = <1800000>;
-		pinctrl-0 = <&hp_det>;
-		pinctrl-names = "default";
-		hp-det-gpio = <&gpio1 RK_PC0 GPIO_ACTIVE_HIGH>;
-		play-pause-key {
-			label = "playpause";
-			linux,code = <164>;
-			press-threshold-microvolt = <2000>;
-		};
 	};
 };
 
@@ -306,36 +264,6 @@
 	};
 };
 
-&i2c8 {
-	status = "okay";
-	pinctrl-0 = <&i2c8m2_xfer>;
-
-	es8316: es8316@11 {
-		compatible = "everest,es8316";
-		reg = <0x11>;
-		clocks = <&mclkout_i2s0>;
-		clock-names = "mclk";
-		assigned-clocks = <&mclkout_i2s0>;
-		assigned-clock-rates = <12288000>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&i2s0_mclk>;
-		#sound-dai-cells = <0>;
-		status = "okay";
-	};
-};
-
-&i2s0_8ch {
-	status = "okay";
-	rockchip,playback-channels = <2>;
-	rockchip,capture-channels = <2>;
-	#sound-dai-cells = <0>;
-	pinctrl-names = "default";
-	pinctrl-0 = <&i2s0_lrck
-		     &i2s0_sclk
-		     &i2s0_sdi0
-		     &i2s0_sdo0>;
-};
-
 &saradc {
 	status = "okay";
 	vref-supply = <&avcc_1v8_s0>;
@@ -358,15 +286,7 @@
 	status = "okay";
 };
 
-&spdif_tx2 {
-	status = "okay";
-};
-
 &hdptxphy_hdmi0 {
-	status = "okay";
-};
-
-&i2s5_8ch {
 	status = "okay";
 };
 
