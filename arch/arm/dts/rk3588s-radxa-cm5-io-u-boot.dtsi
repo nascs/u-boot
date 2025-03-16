@@ -59,10 +59,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&hym8563 {
-	u-boot,dm-pre-reloc;
-};
-
 &usbdp_phy0 {
 	u-boot,dm-pre-reloc;
 };
@@ -144,10 +140,6 @@
 };
 
 &usbc0_int {
-	u-boot,dm-pre-reloc;
-};
-
-&rtc_int {
 	u-boot,dm-pre-reloc;
 };
 
