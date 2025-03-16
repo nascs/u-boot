@@ -168,10 +168,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&vp3_out_dsi1 {
-	u-boot,dm-pre-reloc;
-};
-
 &dsi1_in_vp2 {
 	u-boot,dm-pre-reloc;
 };
