@@ -1661,15 +1661,6 @@
 		ports = <&vop_out>;
 
 		route {
-			route_dp0: route-dp0 {
-				status = "disabled";
-				logo,uboot = "logo.bmp";
-				logo,kernel = "logo_kernel.bmp";
-				logo,mode = "center";
-				charge_logo,mode = "center";
-				connect = <&vp1_out_dp0>;
-			};
-
 			route_dsi0: route-dsi0 {
 				status = "disabled";
 				logo,uboot = "logo.bmp";
@@ -4553,11 +4544,6 @@
 				#size-cells = <0>;
 				reg = <0>;
 
-				vp0_out_dp0: endpoint@0 {
-					reg = <0>;
-					remote-endpoint = <&dp0_in_vp0>;
-				};
-
 				vp0_out_edp0: endpoint@1 {
 					reg = <1>;
 					remote-endpoint = <&edp0_in_vp0>;
@@ -4573,11 +4559,6 @@
 				#address-cells = <1>;
 				#size-cells = <0>;
 				reg = <1>;
-
-				vp1_out_dp0: endpoint@0 {
-					reg = <0>;
-					remote-endpoint = <&dp0_in_vp1>;
-				};
 
 				vp1_out_edp0: endpoint@1 {
 					reg = <1>;
@@ -4597,11 +4578,6 @@
 
 				assigned-clocks = <&cru DCLK_VOP2_SRC>;
 				assigned-clock-parents = <&cru PLL_V0PLL>;
-
-				vp2_out_dp0: endpoint@0 {
-					reg = <0>;
-					remote-endpoint = <&dp0_in_vp2>;
-				};
 
 				vp2_out_edp0: endpoint@1 {
 					reg = <1>;
@@ -4896,58 +4872,6 @@
 		power-domains = <&power RK3588_PD_VO0>;
 		rockchip,vo-grf = <&vo0_grf>;
 		status = "disabled";
-	};
-
-	dp0: dp@fde50000 {
-		compatible = "rockchip,rk3588-dp";
-		reg = <0x0 0xfde50000 0x0 0x4000>;
-		interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&cru PCLK_DP0>, <&cru CLK_AUX16M_0>,
-			 <&cru MCLK_I2S4_8CH_TX>, <&cru MCLK_SPDIF2_DP0>,
-			 <&hclk_vo0>, <&cru CLK_DP0>;
-		clock-names = "apb", "aux", "i2s", "spdif", "hclk", "hdcp";
-		assigned-clocks = <&cru CLK_AUX16M_0>;
-		assigned-clock-rates = <16000000>;
-		resets = <&cru SRST_DP0>;
-		phys = <&usbdp_phy0_dp>;
-		power-domains = <&power RK3588_PD_VO0>;
-		#sound-dai-cells = <1>;
-		status = "disabled";
-
-		ports {
-			#address-cells = <1>;
-			#size-cells = <0>;
-
-			port@0 {
-				reg = <0>;
-				#address-cells = <1>;
-				#size-cells = <0>;
-
-				dp0_in_vp0: endpoint@0 {
-					reg = <0>;
-					remote-endpoint = <&vp0_out_dp0>;
-					status = "disabled";
-				};
-
-				dp0_in_vp1: endpoint@1 {
-					reg = <1>;
-					remote-endpoint = <&vp1_out_dp0>;
-					status = "disabled";
-				};
-
-				dp0_in_vp2: endpoint@2 {
-					reg = <2>;
-					remote-endpoint = <&vp2_out_dp0>;
-					status = "disabled";
-				};
-			};
-
-			port@1 {
-				reg = <1>;
-
-				dp0_out: endpoint { };
-			};
-		};
 	};
 
 	hdcp1: hdcp@fde70000 {

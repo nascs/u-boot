@@ -23,14 +23,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&dp0 {
-	u-boot,dm-pre-reloc;
-};
-
-&dp0_in_vp2 {
-	u-boot,dm-pre-reloc;
-};
-
 &sdhci {
 	u-boot,dm-spl;
 };

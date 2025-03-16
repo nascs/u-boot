@@ -53,14 +53,6 @@
 	};
 };
 
-&dp0 {
-	status = "okay";
-};
-
-&dp0_in_vp2 {
-	status = "okay";
-};
-
 &pwm4 {
 	status = "okay";
 	pinctrl-0 = <&pwm4m0_pins>;
