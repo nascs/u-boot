@@ -49,7 +49,11 @@
 		regulator-boot-on;
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
-		vin-supply = <&vcc12v_dcin>;
+		enable-active-high;
+		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&vcc3v3_sys_en>;
+		vin-supply = <&vdd5v_lcd>;
 	};
 
 	vcc_lcd1_3v3: vcc-lcd-3v3 {
