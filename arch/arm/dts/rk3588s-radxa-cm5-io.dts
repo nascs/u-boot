@@ -77,19 +77,6 @@
 		pinctrl-0 = <&vcc5v0_host_en>;
 		vin-supply = <&vcc5v0_sys>;
 	};
-
-	vcc3v3_pcie2x1l0: vcc3v3-pcie2x1l0 {
-		compatible = "regulator-fixed";
-		regulator-name = "vcc3v3_pcie2x1l0";
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		enable-active-high;
-		regulator-boot-on;
-		regulator-always-on;
-		gpios = <&gpio1 RK_PD3 GPIO_ACTIVE_HIGH>;
-		startup-delay-us = <50000>;
-		vin-supply = <&vcc5v0_sys>;
-	};
 };
 
 &i2c6 {
@@ -295,12 +282,6 @@
 			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_up>;
 		};
 	};
-};
-
-&pcie2x1l2 {
-	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
-	vpcie3v3-supply = <&vcc3v3_pcie2x1l0>;
-	status = "okay";
 };
 
 &combphy0_ps {

@@ -31,10 +31,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&vcc3v3_pcie2x1l0 {
-	u-boot,dm-pre-reloc;
-};
-
 &i2c6 {
 	u-boot,dm-pre-reloc;
 };
@@ -140,10 +136,6 @@
 };
 
 &usbc0_int {
-	u-boot,dm-pre-reloc;
-};
-
-&pcie2x1l2 {
 	u-boot,dm-pre-reloc;
 };
 
