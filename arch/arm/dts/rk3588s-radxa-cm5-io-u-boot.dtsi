@@ -160,4 +160,10 @@
 	u-boot,dm-pre-reloc;
 };
 
+&pwm15 {
+	u-boot,dm-pre-reloc;
+};
 
+&pwm15m1_pins {
+	u-boot,dm-pre-reloc;
+};
