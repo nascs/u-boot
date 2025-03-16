@@ -90,24 +90,6 @@
 		startup-delay-us = <50000>;
 		vin-supply = <&vcc5v0_sys>;
 	};
-
-	wifi_disable: wifi-diable-gpio-regulator {
-		compatible = "regulator-fixed";
-		regulator-name = "wifi_disable";
-		enable-active-high;
-		gpio = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
-		regulator-boot-on;
-		regulator-always-on;
-	};
-
-	bt_wake: bt-wake-gpio-regulator {
-		compatible = "regulator-fixed";
-		regulator-name = "bt_wake";
-		enable-active-high;
-		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-		regulator-boot-on;
-		regulator-always-on;
-	};
 };
 
 &i2c6 {
