@@ -135,3 +135,29 @@
 &vdd5v_lcd_en {
 	u-boot,dm-pre-reloc;
 };
+
+&dsi1 {
+	u-boot,dm-pre-reloc;
+};
+
+&dsi1_panel {
+	u-boot,dm-pre-reloc;
+};
+
+&disp_timings1 {
+	u-boot,dm-pre-reloc;
+};
+
+&dsi1_timing0 {
+	u-boot,dm-pre-reloc;
+};
+
+&panel_in_dsi1 {
+	u-boot,dm-pre-reloc;
+};
+
+&dsi1_out_panel {
+	u-boot,dm-pre-reloc;
+};
+
+
