@@ -179,3 +179,7 @@
 &vdd5v_lcd {
 	u-boot,dm-pre-reloc;
 };
+
+&drm_logo {
+	u-boot,dm-pre-reloc;
+};
