@@ -181,32 +181,12 @@
 	u-boot,dm-pre-reloc;
 };
 
-&u2phy0 {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
-
-&u2phy0_otg {
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
-
 &usb_grf{
 	u-boot,dm-pre-reloc;
 };
 
 &usbdpphy0_grf{
 	u-boot,dm-pre-reloc;
-};
-
-&usbdp_phy0{
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
-
-&usbdp_phy0_u3{
-	u-boot,dm-pre-reloc;
-	status = "okay";
 };
 
 &aclk_usb {
@@ -302,14 +282,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&usb2phy3_grf {
-	u-boot,dm-pre-reloc;
-};
-
-&usb2phy2_grf {
-	u-boot,dm-pre-reloc;
-};
-
 &hdptxphy0_grf {
 	u-boot,dm-pre-reloc;
 };
@@ -326,10 +298,6 @@
 	u-boot,dm-pre-reloc;	
 };
 
-&usbdp_phy0{
-	u-boot,dm-pre-reloc;
-	status = "okay";
-};
 
 /* Support SPL-PINCTRL:
  * 1. ioc

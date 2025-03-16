@@ -15,55 +15,11 @@
 	u-boot,dm-pre-reloc;
 };
 
-&vbus5v0_typec {
-	u-boot,dm-pre-reloc;
-};
-
 &vcc_1v1_nldo_s3 {
 	u-boot,dm-pre-reloc;
 };
 
 &vcc3v3_sys {
-	u-boot,dm-pre-reloc;
-};
-
-&vcc5v0_host {
-	u-boot,dm-pre-reloc;
-};
-
-&i2c6 {
-	u-boot,dm-pre-reloc;
-};
-
-&usbc0 {
-	u-boot,dm-pre-reloc;
-};
-
-&usbc0_role_sw {
-	u-boot,dm-pre-reloc;
-};
-
-&usb_con {
-	u-boot,dm-pre-reloc;
-};
-
-&usbc0_orien_sw {
-	u-boot,dm-pre-reloc;
-};
-
-&dp_altmode_mux {
-	u-boot,dm-pre-reloc;
-};
-
-&usbdp_phy0 {
-	u-boot,dm-pre-reloc;
-};
-
-&usbdp_phy0_orientation_switch {
-	u-boot,dm-pre-reloc;
-};
-
-&usbdp_phy0_dp_altmode_mux {
 	u-boot,dm-pre-reloc;
 };
 
@@ -127,91 +83,11 @@
 	u-boot,dm-pre-reloc;
 };
 
-&vcc5v0_host_en {
-	u-boot,dm-pre-reloc;
-};
-
-&vbus5v0_typec_en {
-	u-boot,dm-pre-reloc;
-};
-
-&usbc0_int {
-	u-boot,dm-pre-reloc;
-};
-
 &combphy0_ps {
 	u-boot,dm-pre-reloc;
 };
 
 &combphy2_psu {
-	u-boot,dm-pre-reloc;
-};
-
-&u2phy0 {
-	u-boot,dm-pre-reloc;
-};
-
-&u2phy2 {
-	u-boot,dm-pre-reloc;
-};
-
-&u2phy3 {
-	u-boot,dm-pre-reloc;
-};
-
-&u2phy0_otg {
-	u-boot,dm-pre-reloc;
-};
-
-&u2phy2_host {
-	u-boot,dm-pre-reloc;
-};
-
-&u2phy3_host {
-	u-boot,dm-pre-reloc;
-};
-
-&usb_host0_ehci {
-	u-boot,dm-pre-reloc;
-};
-
-&usb_host0_ohci {
-	u-boot,dm-pre-reloc;
-};
-
-&usb_host1_ehci {
-	u-boot,dm-pre-reloc;
-};
-
-&usb_host1_ohci {
-	u-boot,dm-pre-reloc;
-};
-
-&usbdp_phy0_dp {
-	u-boot,dm-pre-reloc;
-};
-
-&usbdp_phy0_u3 {
-	u-boot,dm-pre-reloc;
-};
-
-&usbdrd3_0 {
-	u-boot,dm-pre-reloc;
-};
-
-&usbdrd_dwc3_0 {
-	u-boot,dm-pre-reloc;
-};
-
-&dwc3_0_role_switch {
-	u-boot,dm-pre-reloc;
-};
-
-&usbhost3_0 {
-	u-boot,dm-pre-reloc;
-};
-
-&usbhost_dwc3_0 {
 	u-boot,dm-pre-reloc;
 };
 
