@@ -42,6 +42,20 @@
 		vin-supply = <&vcc5v0_sys>;
 	};
 
+	vdd5v_lcd: vcc5v-lcd {
+		compatible = "regulator-fixed";
+		regulator-name = "vdd5v_lcd";
+		regulator-always-on;
+		regulator-boot-on;
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		enable-active-high;
+		gpio = <&gpio1 RK_PD1 GPIO_ACTIVE_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&vdd5v_lcd_en>;
+		vin-supply = <&vcc12v_dcin>;
+	};
+
 	vcc3v3_sys: vcc3v3-sys {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc3v3_sys";
@@ -196,6 +210,7 @@
 		vcc3v3_sys_en: vcc3v3-sys-en {
 			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
+
 		vdd5v_lcd_en: vdd5v-lcd-en {
 			rockchip,pins = <1 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
 		};

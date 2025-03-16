@@ -175,3 +175,7 @@
 &dsi1_in_vp3 {
 	u-boot,dm-pre-reloc;
 };
+
+&vdd5v_lcd {
+	u-boot,dm-pre-reloc;
+};
