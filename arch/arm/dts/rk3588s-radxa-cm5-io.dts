@@ -198,14 +198,6 @@
 	};
 };
 
-&combphy0_ps {
-	status = "okay";
-};
-
-&combphy2_psu {
-	status = "okay";
-};
-
 &sdmmc {
 	max-frequency = <200000000>;
 	no-sdio;

@@ -75,14 +75,6 @@
 	u-boot,dm-pre-reloc;
 };
 
-&combphy0_ps {
-	u-boot,dm-pre-reloc;
-};
-
-&combphy2_psu {
-	u-boot,dm-pre-reloc;
-};
-
 &sdmmc {
 	u-boot,dm-spl;
 };
