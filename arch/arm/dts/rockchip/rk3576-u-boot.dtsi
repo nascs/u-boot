@@ -1,7 +1,7 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 /*
- * (C) Copyright 2023 Rockchip Electronics Co., Ltd
- *
- * SPDX-License-Identifier:     GPL-2.0+
+ * Copyright (c) 2025 Rockchip Electronics Co., Ltd.
+ * Copyright (c) 2025 Radxa Computer (Shenzhen) Co., Ltd.
  */
 
 #include <dt-bindings/gpio/gpio.h>
@@ -57,6 +57,18 @@
 	status = "okay";
 };
 
+&spll {
+	u-boot,dm-spl;
+};
+
+&xin32k {
+	u-boot,dm-spl;
+};
+
+&xin24m {
+	u-boot,dm-spl;	
+};
+
 &scmi {
 	u-boot,dm-pre-reloc;
 };
@@ -67,6 +79,10 @@
 
 &scmi_shmem {
 	u-boot,dm-pre-reloc;
+};
+
+&sram {
+	u-boot,dm-spl;
 };
 
 &sys_grf {
@@ -80,6 +96,11 @@
 };
 
 &cru {
+	u-boot,dm-spl;
+	status = "okay";
+};
+
+&pmu {
 	u-boot,dm-spl;
 	status = "okay";
 };
@@ -141,6 +162,8 @@
 };
 
 &sdmmc {
+	clocks = <&cru CCLK_SRC_SDMMC0>, <&cru HCLK_SDMMC0>;
+	clock-names = "ciu", "biu";
 	bus-width = <4>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_det &sdmmc0_bus4 &sdmmc0_pwren>;
@@ -254,4 +277,12 @@
 &ufs {
 	u-boot,dm-spl;
 	status = "okay";
+};
+
+&ioc_grf {
+	u-boot,dm-pre-reloc;
+};
+
+&vo0_grf {
+	u-boot,dm-pre-reloc;
 };
