@@ -1,5 +1,11 @@
 #include "rk3576-radxa-cm4-u-boot.dtsi"
 
+&vcc12v_dcin {
+    u-boot,dm-pre-reloc;
+};
+
+/* USB */
+
 &u2phy0 {
 	u-boot,dm-pre-reloc;
 };
@@ -24,3 +30,23 @@
     u-boot,dm-pre-reloc;
 };
 
+&usb20_reset {
+    u-boot,dm-pre-reloc;
+};
+
+&usb20_reset_pin {
+    u-boot,dm-pre-reloc;
+};
+
+/* PCIe */
+&vcc3v3_pcie {
+    u-boot,dm-pre-reloc;
+};
+
+&combphy0_ps {
+    u-boot,dm-pre-reloc;
+};
+
+&pcie0 {
+    u-boot,dm-pre-reloc;
+};
