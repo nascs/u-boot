@@ -1,2 +1,26 @@
 #include "rk3576-radxa-cm4-u-boot.dtsi"
 
+&u2phy0 {
+	u-boot,dm-pre-reloc;
+};
+
+&u2phy0_otg {
+	u-boot,dm-pre-reloc;
+};
+
+&usb_drd0_dwc3 {
+	u-boot,dm-pre-reloc;
+};
+
+&usb2phy_grf {
+    u-boot,dm-pre-reloc;
+};
+
+&usb_grf {
+    u-boot,dm-pre-reloc;
+};
+
+&php_grf {
+    u-boot,dm-pre-reloc;
+};
+
