@@ -13,9 +13,9 @@
 #include <dt-bindings/display/drm_mipi_dsi.h>
 #include <dt-bindings/display/rockchip_vop.h>
 #include <dt-bindings/sensor-dev.h>
-#include "rk3576.dtsi"
-#include "rk3576-linux.dtsi"
-#include "rk3576-rk806.dtsi"
+#include "rockchip/rk3576.dtsi"
+#include "rockchip/rk3576-linux.dtsi"
+#include "rockchip/rk3576-rk806.dtsi"
 
 / {
 	model = "Radxa CM4";
