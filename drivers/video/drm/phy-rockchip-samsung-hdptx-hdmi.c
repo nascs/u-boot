@@ -1998,6 +1998,9 @@ static int rockchip_hdptx_phy_hdmi_bind(struct udevice *parent)
 }
 
 static const struct udevice_id rockchip_hdptx_phy_hdmi_ids[] = {
+	{ .compatible = "rockchip,rk3576-hdptx-phy-hdmi",
+	  .data = (ulong)&hdptx_hdmi_phy_driver_data0,
+	},
 	{ .compatible = "rockchip,rk3588-hdptx-phy-hdmi",
 	  .data = (ulong)&hdptx_hdmi_phy_driver_data0,
 	},
@@ -2035,6 +2038,7 @@ static ulong hdptx_clk_set_rate(struct clk *clk, ulong rate)
 	int bus_width = hdptx->bus_width;
 	u8 color_depth = (bus_width & COLOR_DEPTH_MASK) ? 1 : 0;
 	ulong new_rate = -ENOENT;
+	ulong requested_rate = rate;
 
 	if (color_depth && rate <= HDMI20_MAX_RATE)
 		rate = (rate / 100) * 5 / 4;
@@ -2044,19 +2048,19 @@ static ulong hdptx_clk_set_rate(struct clk *clk, ulong rate)
 	if (rate > (HDMI20_MAX_RATE / 100)) {
 		if  (rate == FRL_8G_4LANES / 100) {
 			if (!hdptx_lcpll_ropll_cmn_config(hdptx, rate)) {
-				new_rate = rate;
-				priv->rate = rate;
+				new_rate = requested_rate;
+				priv->rate = requested_rate;
 			}
 		} else {
 			if (!hdptx_lcpll_cmn_config(hdptx, rate)) {
-				new_rate = rate;
-				priv->rate = rate;
+				new_rate = requested_rate;
+				priv->rate = requested_rate;
 			}
 		}
 	} else {
 		if (!hdptx_ropll_cmn_config(hdptx, rate)) {
-			new_rate = rate;
-			priv->rate = rate;
+			new_rate = requested_rate;
+			priv->rate = requested_rate;
 		}
 	}
 
