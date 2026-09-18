@@ -2239,6 +2239,9 @@
 				  "vop-vp2";
 		clocks = <&cru ACLK_VOP>,
 			 <&cru HCLK_VOP>,
+			 <&cru DCLK_VP0>,
+			 <&cru DCLK_VP1>,
+			 <&cru DCLK_VP2>,
 			 <&cru DCLK_VP0_SRC>,
 			 <&cru DCLK_VP1_SRC>,
 			 <&cru DCLK_VP2_SRC>;
@@ -2246,7 +2249,10 @@
 			      "hclk_vop",
 			      "dclk_vp0",
 			      "dclk_vp1",
-			      "dclk_vp2";
+			      "dclk_vp2",
+			      "dclk_src_vp0",
+			      "dclk_src_vp1",
+			      "dclk_src_vp2";
 		iommus = <&vop_mmu>;
 		power-domains = <&power RK3576_PD_VOP>;
 		rockchip,grf = <&sys_grf>;
@@ -2535,7 +2541,7 @@
 			 <&cru DCLK_VP1>,
 			 <&cru DCLK_VP2>,
 			 <&cru DCLK_EBC>,
-			 <&hclk_vo1>,
+			 <&cru HCLK_VO0_ROOT>,
 			 <&hdptxphy_hdmi>;
 		clock-names = "pclk",
 			      "hpd",
@@ -2554,8 +2560,8 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&hdmi_txm0_pins &hdmi_tx_scl &hdmi_tx_sda>;
 		reg-io-width = <4>;
-		rockchip,grf = <&sys_grf>;
-		rockchip,vo1_grf = <&vo0_grf>;
+		rockchip,grf = <&ioc_grf>;
+		rockchip,vo0_grf = <&vo0_grf>;
 		phys = <&hdptxphy_hdmi>;
 		phy-names = "hdmi";
 		#sound-dai-cells = <0>;
