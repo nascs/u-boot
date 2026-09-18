@@ -3534,6 +3534,14 @@ static int rockchip_vop2_preinit(struct display_state *state)
 				printf("%s: Get syscon vo1_grf failed (ret=%p)\n",
 				       __func__, rockchip_vop2->vo1_grf);
 			map = syscon_regmap_lookup_by_phandle(cstate->dev, "rockchip,pmu");
+			if (IS_ERR(map)) {
+				printf("%s: Get syscon sys_pmu failed: %ld\n",
+				       __func__, PTR_ERR(map));
+				free(rockchip_vop2->regsbak);
+				free(rockchip_vop2);
+				rockchip_vop2 = NULL;
+				return PTR_ERR(map);
+			}
 			rockchip_vop2->sys_pmu = regmap_get_range(map, 0);
 			if (rockchip_vop2->sys_pmu <= 0)
 				printf("%s: Get syscon sys_pmu failed (ret=%p)\n",
@@ -3545,6 +3553,14 @@ static int rockchip_vop2_preinit(struct display_state *state)
 				printf("%s: Get syscon ioc_grf failed (ret=%p)\n",
 				       __func__, rockchip_vop2->ioc_grf);
 			map = syscon_regmap_lookup_by_phandle(cstate->dev, "rockchip,pmu");
+			if (IS_ERR(map)) {
+				printf("%s: Get syscon sys_pmu failed: %ld\n",
+				       __func__, PTR_ERR(map));
+				free(rockchip_vop2->regsbak);
+				free(rockchip_vop2);
+				rockchip_vop2 = NULL;
+				return PTR_ERR(map);
+			}
 			rockchip_vop2->sys_pmu = regmap_get_range(map, 0);
 			if (rockchip_vop2->sys_pmu <= 0)
 				printf("%s: Get syscon sys_pmu failed (ret=%p)\n",
