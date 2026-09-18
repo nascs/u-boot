@@ -1747,16 +1747,48 @@ display_deinit:
 }
 #endif
 
+static int rockchip_display_ensure(void)
+{
+	struct udevice *dev;
+	int ret;
+
+	if (!list_empty(&rockchip_display_list))
+		return 0;
+
+	ret = uclass_first_device_err(UCLASS_VIDEO, &dev);
+	if (ret) {
+		printf("failed to probe rockchip display, ret=%d\n", ret);
+		return ret;
+	}
+
+	if (list_empty(&rockchip_display_list)) {
+		printf("failed to find available display route\n");
+		return -ENODEV;
+	}
+
+	return 0;
+}
+
 int rockchip_show_bmp_by_address(const char *bmp, uintptr_t addr)
 {
 	struct display_state *s;
 	int ret = 0;
 
+	ret = rockchip_display_ensure();
+	if (ret)
+		return ret;
+
 	list_for_each_entry(s, &rockchip_display_list, head) {
 		s->logo.mode = s->charge_logo_mode;
 		if (load_bmp_logo(&s->logo, bmp, addr))
 			continue;
-		ret = display_bmp(s);
+		if (!s->is_init)
+			ret = display_logo(s);
+		else
+			ret = display_bmp(s);
+		if (ret)
+			printf("failed to display bmp from 0x%lx, ret=%d\n",
+			       (unsigned long)addr, ret);
 	}
 
 	return ret;
@@ -1773,6 +1805,10 @@ int rockchip_show_bmp(const char *bmp)
 		return -ENOENT;
 	}
 
+	ret = rockchip_display_ensure();
+	if (ret)
+		return ret;
+
 	list_for_each_entry(s, &rockchip_display_list, head) {
 		s->logo.mode = s->charge_logo_mode;
 		if (load_bmp_logo(&s->logo, bmp, 0))
@@ -1781,6 +1817,8 @@ int rockchip_show_bmp(const char *bmp)
 			ret = display_logo(s);
 		else
 			ret = display_bmp(s);
+		if (ret)
+			printf("failed to display bmp, ret=%d\n", ret);
 	}
 
 	return ret;
@@ -1792,6 +1830,10 @@ int rockchip_show_logo(void)
 	struct display_state *ms = NULL;
 	int ret = 0;
 	int count = 0;
+
+	ret = rockchip_display_ensure();
+	if (ret)
+		return ret;
 
 	list_for_each_entry(s, &rockchip_display_list, head) {
 		s->logo.mode = s->logo_mode;
@@ -2595,7 +2637,7 @@ static int rockchip_display_probe(struct udevice *dev)
 #endif
 
 	if (list_empty(&rockchip_display_list)) {
-		debug("Failed to found available display route\n");
+		printf("Failed to found available display route\n");
 		return -ENODEV;
 	}
 	rockchip_get_baseparameter();
@@ -2632,6 +2674,20 @@ void rockchip_display_fixup(void *blob)
 		list_for_each_entry(s, &rockchip_display_list, head) {
 			if (s->is_init) {
 				ret = load_bmp_logo(&s->logo, s->klogo_name, 0);
+				/*
+				 * The kernel logo ('logo,kernel') is normally served
+				 * from the resource partition. When it is not present
+				 * there, fall back to the U-Boot logo, which has
+				 * already been loaded from the boot partition and is
+				 * cached - the kernel can then keep the very same
+				 * framebuffer content on screen.
+				 */
+				if (ret < 0 && s->ulogo_name[0]) {
+					printf("VP%d kernel logo '%s' not found, reuse '%s'\n",
+					       s->crtc_state.crtc_id, s->klogo_name,
+					       s->ulogo_name);
+					ret = load_bmp_logo(&s->logo, s->ulogo_name, 0);
+				}
 				if (ret < 0) {
 					s->is_klogo_valid = false;
 					printf("VP%d fail to load kernel logo\n",
