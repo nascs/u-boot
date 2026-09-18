@@ -13,6 +13,8 @@ static const struct udevice_id rk3576_syscon_ids[] = {
 	{ .compatible = "rockchip,rk3576-sys-grf", .data = ROCKCHIP_SYSCON_GRF },
 	{ .compatible = "rockchip,rk3576-ioc-grf", .data = ROCKCHIP_SYSCON_IOC },
 	{ .compatible = "rockchip,rk3576-sdgmac-grf", .data = ROCKCHIP_SYSCON_SDGMAC_GRF },
+	{ .compatible = "rockchip,rk3576-vo0-grf", .data = ROCKCHIP_SYSCON_VO_GRF },
+	{ .compatible = "rockchip,rk3576-hdptxphy-grf", .data = ROCKCHIP_SYSCON_VO_GRF },
 	{ }
 };
 
