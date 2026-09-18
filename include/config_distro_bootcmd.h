@@ -336,6 +336,24 @@
 #define BOOTENV_BOOT_TARGETS \
 	"boot_targets=" BOOT_TARGET_DEVICES(BOOTENV_DEV_NAME) "\0"
 
+#ifdef CONFIG_DRM_ROCKCHIP
+#define BOOTENV_SCAN_LOGO \
+	"scan_dev_for_logo="						  \
+		"echo Scanning ${devtype} ${devnum}:${distro_bootpart} for logo...; " \
+		"if test -e ${devtype} "				  \
+				"${devnum}:${distro_bootpart} "		  \
+				"/logo.bmp; then "			  \
+			"echo Found /logo.bmp; "			  \
+			"if fatload ${devtype} ${devnum}:${distro_bootpart} " \
+				"${kernel_addr_r} /logo.bmp; then "	  \
+				"rockchip_show_bmp logo.bmp ${kernel_addr_r}; " \
+			"fi; "						  \
+		"fi\0"
+#else
+#define BOOTENV_SCAN_LOGO \
+	"scan_dev_for_logo=echo Rockchip boot logo not supported.\0"
+#endif
+
 #define BOOTENV_DEV(devtypeu, devtypel, instance) \
 	BOOTENV_DEV_##devtypeu(devtypeu, devtypel, instance)
 #define BOOTENV \
@@ -353,6 +371,7 @@
 	"boot_scripts=boot.scr.uimg boot.scr\0" \
 	"boot_script_dhcp=boot.scr.uimg\0" \
 	BOOTENV_BOOT_TARGETS \
+	BOOTENV_SCAN_LOGO \
 	\
 	"boot_extlinux="                                                  \
 		"sysboot ${devtype} ${devnum}:${distro_bootpart} any "    \
@@ -395,6 +414,9 @@
 		"\0"                                                      \
 	\
 	"scan_dev_for_boot_part="                                         \
+		"for distro_bootpart in 1; do "				  \
+			"run scan_dev_for_logo; "			  \
+		"done; "						  \
 		"part list ${devtype} ${devnum} -bootable devplist; "     \
 		"env exists devplist || setenv devplist 1; "              \
 		"boot_android ${devtype} ${devnum}; "                     \
