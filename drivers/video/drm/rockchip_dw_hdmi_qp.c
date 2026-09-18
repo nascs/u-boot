@@ -1529,6 +1529,9 @@ static enum drm_connector_status rk3576_read_hpd(struct rockchip_hdmi *hdmi)
 	int ret;
 
 	val = readl(hdmi->grf + RK3576_IOC_HDMITX_HPD_STATUS);
+	dev_dbg(hdmi->dev, "RK3576 HDMI HPD status: 0x%08x (port=%u level=%u)\n",
+		val, !!(val & RK3576_HDMITX_HPD_PORT_LEVEL),
+		!!(val & RK3576_HDMITX_LEVEL_INT));
 
 	if (val & RK3576_HDMITX_LEVEL_INT)
 		ret = connector_status_connected;
@@ -1667,16 +1670,16 @@ static int rockchip_dw_hdmi_qp_probe(struct udevice *dev)
 	hdmi->sda_falling_delay_ns =
 		ofnode_read_u32_default(hdmi_node, "rockchip,sda-falling-delay-ns", 0);
 
+	ret = clk_get_by_name(dev, "link_clk", &hdmi->link_clk);
+	if (ret) {
+		printf("%s: can't get link_clk: %d\n", __func__, ret);
+		return ret;
+	}
+
 	ret = gpio_request_by_name(dev, "enable-gpios", 0,
 				   &hdmi->enable_gpio, GPIOD_IS_OUT);
 	if (ret && ret != -ENOENT) {
 		dev_err(dev, "Cannot get enable GPIO: %d\n", ret);
-		return ret;
-	}
-
-	ret = clk_get_by_name(dev, "link_clk", &hdmi->link_clk);
-	if (ret) {
-		printf("%s: can't get link_clk\n", __func__);
 		return ret;
 	}
 
