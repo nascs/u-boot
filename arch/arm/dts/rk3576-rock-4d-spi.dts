@@ -8,6 +8,12 @@
 
 #include "rk3576-rock-4d.dts"
 
+/ {
+	chosen {
+		u-boot,spl-boot-order = &spi_nor, "same-as-spl";
+	};
+};
+
 &sdhci {
 	status = "disabled";
 };
